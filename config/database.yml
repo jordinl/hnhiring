@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: hnhiring_dev
+  encoding: unicode
+  password:
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: hnhiring_test
+  encoding: unicode
+  password:
+  pool: 5
+  timeout: 5000

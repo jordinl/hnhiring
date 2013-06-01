@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+
+  %body
+    .navbar
+      .navbar_content
+        = image_tag("y18.gif", id: 'hacker_news_icon')
+        .title.left
+          %a{ :href => @month.url } Who's hiring? - #{@month.name}
+          \- by -
+          %a{ :href => 'http://jordinl.com' }@jordinl83
+        .right
+          %input.filter{ :name => 'filter' }
+        .title.right
+          Filter:
+    #content
+      %ul
+        - @month.comments.each do |comment|
+          %li.comment
+            .user
+              %a{ :href => "http://news.ycombinator.com/user?id=#{comment['username']}" }#{comment['username']}
+              on
+              %span.date
+              .timestamp.hidden= comment['create_ts']
+            = simple_format(comment['text'])
+
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', #{ENV['ANALYTICS_ID']} ]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
