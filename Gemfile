@@ -4,6 +4,7 @@ ruby "2.0.0"
 gem 'rails', '4.0.0.beta1'
 gem 'haml'
 gem 'pg'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails',   '~> 4.0.0.beta1'
