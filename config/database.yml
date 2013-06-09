@@ -6,6 +6,14 @@ development:
   pool: 5
   timeout: 5000
 
+production:
+  adapter: postgresql
+  database: hnhiring_dev
+  encoding: unicode
+  password:
+  pool: 5
+  timeout: 5000
+
 test:
   adapter: postgresql
   database: hnhiring_test
