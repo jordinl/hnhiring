@@ -19,7 +19,7 @@ class HackerNews
     end
 
     def find_hiring_post
-      html = open("https://news.ycombinator.com/submitted?id=whoishiring").read
+      html = HTTParty.get("https://news.ycombinator.com/submitted?id=whoishiring").body
       link = Nokogiri::HTML.parse(html).css("td.title a").detect do |p|
         p.text.downcase =~ /^ask hn:.*hiring.*\(.*#{Time.now.strftime('%B').downcase[0,3]}.*#{Time.now.year}.*\)$/
       end
