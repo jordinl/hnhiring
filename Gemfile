@@ -8,6 +8,7 @@ gem 'unicorn'
 gem 'nokogiri'
 gem 'httparty'
 gem 'chronic'
+gem 'redis'
 
 group :assets do
   gem 'sass-rails',   '~> 4.0.0.beta1'

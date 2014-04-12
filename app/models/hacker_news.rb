@@ -2,11 +2,13 @@ class HackerNews
   class << self
 
     def get_last_hiring_post!
-      return if Month.where(number: current_month).first
+      month = Month.where(number: current_month).first
 
-      if post_id = find_hiring_post
-        Month.create(post_id: post_id, api_id: post_id, number: current_month)
+      if month.nil? && post_id = find_hiring_post
+        month = Month.create(post_id: post_id, api_id: post_id, number: current_month)
       end
+
+      month.load_comments if month.present?
     end
 
     def current_month

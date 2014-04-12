@@ -9,7 +9,29 @@ class Month < ActiveRecord::Base
     super
   end
 
+  def load_comments
+    comments = fetch_comments
+
+    redis.set(url, JSON.dump(comments))
+  end
+
   def comments
+    if comments = redis.get(url)
+      JSON.parse(comments)
+    else
+      []
+    end
+  end
+
+  private
+
+  def redis
+    options = {}
+    options[:url] = ENV["REDISTOGO_URL"] if ENV["REDISTOGO_URL"]
+    @redis ||= Redis.new(options)
+  end
+
+  def fetch_comments
     @comments ||= []
     html = Nokogiri::HTML.parse(HTTParty.get(url).body)
     loop{
