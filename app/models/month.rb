@@ -1,8 +1,6 @@
-require "open-uri"
-
 class Month < ActiveRecord::Base
   def post_id=(post_id)
-    self.url = "http://news.ycombinator.com/item?id=#{post_id}"
+    self.url = "https://news.ycombinator.com/item?id=#{post_id}"
   end
 
   def number=(number)
@@ -11,20 +9,30 @@ class Month < ActiveRecord::Base
     super
   end
 
-  def post_url(start = 0)
-    "http://api.thriftdb.com/api.hnsearch.com/items/_search?filter[fields][parent_sigid][]=#{api_id}&limit=100&sortby=create_ts+desc&start=#{start}"
-  end
-
   def comments
     @comments ||= []
-    return @comments unless @comments.empty?
-    start = 0
+    html = Nokogiri::HTML.parse(HTTParty.get(url).body)
     loop{
-      response = open(post_url(start)).read
-      comments = JSON.parse(response)['results'].map{ |r| r['item'] }
-      @comments += comments
-      return @comments if comments.length < 100
-      start += 100
+      @comments += html.css("td.default").map { |x| x.parent }.select do |x|
+        (x.css("td img").first["width"] == "0") rescue nil
+      end.map do |p|
+        {
+          "username" => p.css("span.comhead a").first.text,
+          "text" => p.css("span.comment").first.to_html,
+          "date" => p.css("span.comhead").first.children[1].text.gsub("|", "").strip
+        } rescue nil
+      end.compact
+
+      if url = next_page(html)
+        html = Nokogiri::HTML.parse(HTTParty.get(url).body)
+      else
+        return @comments.sort_by { |c| Chronic.parse(c["date"]) }.reverse
+      end
     }
+  end
+
+  def next_page(html)
+    link = html.css(".title a").detect { |x| x.text == "More" }
+    "https://news.ycombinator.com#{link["href"]}" if link
   end
 end

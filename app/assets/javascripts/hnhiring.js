@@ -1,22 +1,16 @@
 HNHiring = {
   initialize: function(){
-    this.set_dates();
     this.zebrify();
     this.bind_events();
   },
 
-  set_dates: function(){
-    $.each($('.timestamp'), function(index, element){
-      timestamp = $(element).text();
-      date = (new Date(timestamp)).toDateString();
-      time = (new Date(timestamp)).toTimeString().split(' ')[0];
-      $(element).siblings('.date').html(date + ' at ' + time);
-    });
-  },
-
   zebrify: function(){
     $('.comment').removeClass('even');
-    $('.comment:not(.hidden):even').addClass('even');
+    if($('.comment.hidden').length > 0) {
+      $('li.comment:not(.hidden):even').addClass('even');
+    } else {
+      $('li:even.comment').addClass('even');
+    }
   },
 
   bind_events: function(){
