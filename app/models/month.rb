@@ -48,7 +48,7 @@ class Month < ActiveRecord::Base
       if url = next_page(html)
         html = Nokogiri::HTML.parse(HTTParty.get(url).body)
       else
-        return @comments.sort_by { |c| Chronic.parse(c["date"]) }.reverse
+        return @comments
       end
     }
   end
