@@ -41,7 +41,7 @@ class Month < ActiveRecord::Base
         {
           "username" => p.css("span.comhead a").first.text,
           "text" => p.css("span.comment").first.to_html,
-          "date" => p.css("span.comhead").first.children[1].text.gsub("|", "").strip
+          "date" => p.css("span.comhead").first.children[3].text.strip
         } rescue nil
       end.compact
 
