@@ -20,7 +20,7 @@ HNHiring = {
   },
 
   highlight_word: function(words){
-    $('#content').removeHighlight();
+    $('.comments').removeHighlight();
     $('.comment').removeClass('hidden');
     $.each(words.split(' '), function(index, word){
       if(word.length > 1){
@@ -29,7 +29,7 @@ HNHiring = {
             $(element).addClass('hidden');
           }
         })
-        $('#content').highlight(word);
+        $('.comments').highlight(word);
       }
     });
     HNHiring.zebrify();

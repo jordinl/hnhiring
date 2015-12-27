@@ -6,7 +6,19 @@
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
 
-    = csrf_meta_tags
+    %link{ href: "http://fonts.googleapis.com/css?family=Montserrat:400,700", rel: "stylesheet", type: "text/css"}
+    %link{ href: "http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic", rel: "stylesheet", type:"text/css"}
 
-  %body
+
+  %body.index
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .navbar-header.page-scroll
+        = image_tag("y18.gif", id: 'hacker_news_icon')
+        .title.left
+          %a{ :href => @month.url } Who's hiring? - #{@month.name}
+          %span.green
+            \- by -
+          %a{ :href => 'http://jordinl.com' }Jordi Noguera
+        .right
+          %input.filter.form-control{ name: 'filter', placeholder: "Filter" }
     = yield
