@@ -75,6 +75,7 @@ ul.comments {
   padding: 0;
   margin-top: 15px;
   font-size: 20px;
+  margin-bottom: 70px;
 }
 
 li.comment {
@@ -146,3 +147,10 @@ code {
   color: $green;
 }
 
+.hire-me {
+  position: fixed;
+  left: 10px;
+  bottom: -10px;
+  font-size: 24px;
+  padding: 20px 40px;
+}
