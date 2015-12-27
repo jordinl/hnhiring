@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
-ruby "2.1.2"
+ruby "2.2.3"
 
-gem 'rails', '4.0.0.beta1'
+gem 'rails'
 gem 'haml'
 gem 'pg'
 gem 'unicorn'
@@ -11,9 +11,9 @@ gem 'chronic'
 gem 'redis'
 
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 group :development do
