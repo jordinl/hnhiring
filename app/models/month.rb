@@ -12,7 +12,7 @@ class Month < ActiveRecord::Base
   def load_comments
     comments = fetch_comments
 
-    redis.set(url, JSON.dump(comments))
+    redis.set('stuff', JSON.dump(comments))
   end
 
   def comments
