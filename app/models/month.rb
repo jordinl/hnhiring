@@ -16,7 +16,7 @@ class Month < ActiveRecord::Base
   end
 
   def comments
-    if comments = redis.get(url)
+    if comments = redis.get('stuff')
       JSON.parse(comments)
     else
       []
