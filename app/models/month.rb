@@ -39,9 +39,9 @@ class Month < ActiveRecord::Base
         (x.css("td img").first["width"] == "0") rescue nil
       end.map do |p|
         {
-          "username" => p.css("span.comhead a").first.text,
-          "text" => p.css("span.comment").first.to_html,
-          "date" => p.css("span.comhead").first.children[3].text.strip
+          "username" => p.css(".hnuser").first.text,
+          "text" => p.css(".comment .c00").first.to_html,
+          "date" => p.css(".age").first.text.strip
         } rescue nil
       end.compact
 
