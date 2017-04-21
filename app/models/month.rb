@@ -55,6 +55,6 @@ class Month < ActiveRecord::Base
 
   def next_page(html)
     link = html.css(".title a").detect { |x| x.text == "More" }
-    "https://news.ycombinator.com#{link["href"]}" if link
+    "https://news.ycombinator.com/#{link["href"]}" if link
   end
 end
