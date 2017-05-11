@@ -12,6 +12,9 @@ class Month < ActiveRecord::Base
   def load_comments
     comments = fetch_comments
 
+    comments.sort_by! { |comment| Chronic.parse(comment['date']) }
+    comments.reverse!
+
     redis.set('stuff', JSON.dump(comments))
   end
 
