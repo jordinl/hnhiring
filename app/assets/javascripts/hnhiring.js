@@ -23,7 +23,7 @@ HNHiring = {
     $('.comments').removeHighlight();
     $('.comment').removeClass('hidden');
     $.each(words.split(' '), function(index, word){
-      if(word.length > 1){
+      if(word.length > 2){
         $.each($('.comment'), function(index, element){
           if(!$(element).html().toUpperCase().match(word.toUpperCase())){
             $(element).addClass('hidden');
