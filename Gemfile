@@ -9,6 +9,7 @@ gem 'nokogiri'
 gem 'httparty'
 gem 'chronic'
 gem 'redis'
+gem 'rinku'
 
 group :assets do
   gem 'sass-rails'

@@ -19,7 +19,7 @@ class Month < ActiveRecord::Base
 
     fetch_comments.each do |comment|
       published_at = Chronic.parse(comment['date'])
-      description = simple_format(sanitize(comment['text'], tags: %w(strong em a p)))
+      description = Rinku.auto_link(simple_format(sanitize(comment['text'], tags: %w(strong em a p))))
       comments.create!(description: description, username: comment['username'], published_at: published_at)
     end
   end

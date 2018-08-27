@@ -115,6 +115,7 @@ GEM
     redis (3.2.2)
     rest-client (1.6.9)
       mime-types (~> 1.16)
+    rinku (2.0.4)
     sass (3.4.20)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -173,6 +174,7 @@ DEPENDENCIES
   puma
   rails (~> 4.2.10)
   redis
+  rinku
   sass-rails
   slim-rails
   taps
