@@ -18,10 +18,11 @@ html
         .title.left
           a(href=@month.url) Who's hiring? - #{@month.name}
           span.green<> - by -
-          a(href='http://jordinl.com') Jordi Noguera
-        .right
+          a.show-large(href='http://jordinl.com') Jordi Noguera
+          a.show-small(href='http://jordinl.com') jordinl
+        .right.show-large
           input.filter.form-control(name='filter' placeholder="Filter")
     = yield
 
-    .alert.alert-warning.hire-me
+    .alert.alert-warning.hire-me.show-large
       a(href="http://jordinl.com") I'm available for hire!
