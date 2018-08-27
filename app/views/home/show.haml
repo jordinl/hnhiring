@@ -1,5 +1,5 @@
 %ul.comments
-  - @month.comments.each_with_index do |comment, index|
+  - @comments.each_with_index do |comment, index|
     %li.comment{ class: index % 2 == 0 ? 'even' : 'odd' }
       .container
         .user
