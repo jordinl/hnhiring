@@ -1,8 +1,0 @@
-%ul.comments
-  - @comments.each_with_index do |comment, index|
-    %li.comment{ class: index % 2 == 0 ? 'even' : 'odd' }
-      .container
-        .user
-          %a{ :href => "https://news.ycombinator.com/user?id=#{comment.username}" }#{comment.username}
-          %span.date.right.type-info= "#{time_ago_in_words(comment.published_at)} ago"
-        = comment.description.html_safe

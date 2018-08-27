@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby "2.4.1"
 
 gem 'rails', '~> 4.2.10'
-gem 'haml'
+gem 'slim-rails'
 gem 'pg'
 gem 'puma'
 gem 'nokogiri'
