@@ -8,7 +8,6 @@ gem 'puma'
 gem 'nokogiri'
 gem 'httparty'
 gem 'chronic'
-gem 'redis'
 gem 'rinku'
 
 group :assets do
@@ -18,6 +17,5 @@ group :assets do
 end
 
 group :development do
-  gem 'taps'
   gem 'pry'
 end
