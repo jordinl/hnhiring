@@ -1,4 +1,9 @@
 class Month < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::SanitizeHelper
+
+  has_many :comments
+
   def post_id=(post_id)
     self.url = "https://news.ycombinator.com/item?id=#{post_id}"
   end
@@ -10,29 +15,16 @@ class Month < ActiveRecord::Base
   end
 
   def load_comments
-    comments = fetch_comments
+    comments.destroy_all
 
-    comments.sort_by! { |comment| Chronic.parse(comment['date']) }
-    comments.reverse!
-
-    redis.set('stuff', JSON.dump(comments))
-  end
-
-  def comments
-    if comments = redis.get('stuff')
-      JSON.parse(comments)
-    else
-      []
+    fetch_comments.each do |comment|
+      published_at = Chronic.parse(comment['date'])
+      description = simple_format(sanitize(comment['text'], tags: %w(strong em a p)))
+      comments.create!(description: description, username: comment['username'], published_at: published_at)
     end
   end
 
   private
-
-  def redis
-    options = {}
-    options[:url] = ENV["REDISTOGO_URL"] if ENV["REDISTOGO_URL"]
-    @redis ||= Redis.new(options)
-  end
 
   def fetch_comments
     @comments ||= []
