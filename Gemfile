@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 ruby "2.4.1"
 
-gem 'rails', '~> 5.1.0'
+gem 'bootsnap'
+gem 'rails', '~> 5.2.0'
 gem 'slim-rails'
 gem 'pg'
 gem 'puma'
