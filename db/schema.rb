@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,27 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827122707) do
+ActiveRecord::Schema.define(version: 2018_08_27_122707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "description"
+  create_table "comments", id: :serial, force: :cascade do |t|
+    t.text "description"
     t.datetime "published_at"
-    t.string   "username"
-    t.integer  "month_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string "username"
+    t.integer "month_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["month_id"], name: "index_comments_on_month_id"
   end
 
-  add_index "comments", ["month_id"], name: "index_comments_on_month_id", using: :btree
-
-  create_table "months", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "name"
-    t.string   "url"
-    t.string   "api_id"
+  create_table "months", id: :serial, force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.string "url"
+    t.string "api_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
