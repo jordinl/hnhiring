@@ -10,7 +10,7 @@ class Month < ActiveRecord::Base
   end
 
   def name
-    self.name = Date.new(year, month).strftime("%B")
+    @name ||= Date.new(year, month).strftime("%B")
   end
 
   def previous_month
