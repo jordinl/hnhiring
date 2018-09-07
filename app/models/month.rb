@@ -14,6 +14,10 @@ class Month < ActiveRecord::Base
     super
   end
 
+  def year
+    number / 100
+  end
+
   def load_comments
     comments.destroy_all
 

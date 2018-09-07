@@ -5,11 +5,11 @@ HNHiring = {
   },
 
   zebrify: function(){
-    $('.comment').removeClass('even');
+    $('.comment').removeClass('odd');
     if($('.comment.hidden').length > 0) {
-      $('li.comment:not(.hidden):even').addClass('even');
+      $('li.comment:not(.hidden):odd').addClass('odd');
     } else {
-      $('li:even.comment').addClass('even');
+      $('li:odd.comment').addClass('odd');
     }
   },
 
