@@ -3,9 +3,9 @@ html
   head
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(name='author' content='Jordi Noguera')
-    meta(name='description' content="Compilation of Hacker News 'Who is Hiring?' Post. Find Javascript, Ruby and Python jobs in cities like San Francisco, New York or London")
-    meta(name='keywords' content='Javascript, Ruby, Rails, Python, ReactJS, Angular, San Francisco, New York, London, Jobs')
-    title HNHIRING - Compilation of Hacker News "Who is Hiring?" Posts
+    meta(name='description' content="#{content_for?(:title) ? yield(:title) : default_title}. Find Javascript, Ruby and Python jobs in cities like San Francisco, New York or London")
+    meta(name='keywords' content="Javascript, Ruby, Rails, Python, ReactJS, San Francisco, New York, London, Hiring, #{content_for?(:keywords) ? yield(:keywords) : 'Angular'}")
+    title HNHIRING - #{content_for?(:title) ? yield(:title) : default_title}
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
     = stylesheet_link_tag    "application", media: "all"

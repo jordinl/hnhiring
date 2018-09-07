@@ -13,6 +13,10 @@ class Month < ActiveRecord::Base
     @name ||= Date.new(year, month).strftime("%B")
   end
 
+  def to_s
+    "#{name} #{year}"
+  end
+
   def previous_month
     Month.order(number: :desc).where('number < ?', number).first
   end
