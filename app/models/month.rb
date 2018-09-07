@@ -2,14 +2,17 @@ class Month < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::SanitizeHelper
 
+  validates :number, :api_id, presence: true
+  validates :number, uniqueness: true
+
   has_many :comments, dependent: :destroy
+
+  def url
+    "https://news.ycombinator.com/item?id=#{api_id}"
+  end
 
   def previous_month
     Month.order(number: :desc).where('number < ?', number).first
-  end
-
-  def post_id=(post_id)
-    self.url = "https://news.ycombinator.com/item?id=#{post_id}"
   end
 
   def number=(number)
