@@ -6,12 +6,6 @@ $green: #18bc9c;
   }
 }
 
-@media (min-width: 768px) {
-  .show-small {
-    display: none;
-  }
-}
-
 body {
   overflow-x: hidden;
 }
@@ -122,13 +116,6 @@ li.comment a {
 
 code {
   white-space: pre-line;
-}
-
-#hacker_news_icon {
-  border: 1px solid white;
-  float: left;
-  margin-top: 7px;
-  margin-right: 10px;
 }
 
 .title, .filter {

@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title Who's Hiring? - #{@month.name}
+    title HNHIRING - Compilation of Hacker News "Who is Hiring?" Posts
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
     = stylesheet_link_tag    "application", media: "all"
@@ -15,12 +15,10 @@ html
   body.index
     nav.navbar.navbar-default.navbar-fixed-top
       .navbar-header.page-scroll
-        = image_tag("y18.gif", id: 'hacker_news_icon')
-        .title.left
-          a(href=@month.url) Who's hiring? - #{@month.name}
+        h1.title.left
+          = link_to 'HNHIRING', '/'
           span.green<> - by -
-          a.show-large(href='http://jordinl.com') Jordi Noguera
-          a.show-small(href='http://jordinl.com') jordinl
+          a(href='http://jordinl.com') Jordi Noguera
         .right.show-large
           input.filter.form-control(name='filter' placeholder="Filter")
     = yield
