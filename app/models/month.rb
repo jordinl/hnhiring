@@ -2,7 +2,7 @@ class Month < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::SanitizeHelper
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   def previous_month
     Month.order(number: :desc).where('number < ?', number).first
@@ -25,39 +25,12 @@ class Month < ActiveRecord::Base
   def load_comments
     comments.destroy_all
 
-    fetch_comments.each do |comment|
+    html_comments = CommentsParser.new(url).call
+
+    html_comments.each do |comment|
       published_at = Chronic.parse(comment['date'])
       description = Rinku.auto_link(simple_format(sanitize(comment['text'], tags: %w(strong em a p))))
       comments.create!(description: description, username: comment['username'], published_at: published_at)
     end
-  end
-
-  private
-
-  def fetch_comments
-    @comments ||= []
-    html = Nokogiri::HTML.parse(HTTParty.get(url).body)
-    loop{
-      @comments += html.css("td.default").map { |x| x.parent }.select do |x|
-        (x.css("td img").first["width"] == "0") rescue nil
-      end.map do |p|
-        {
-          "username" => p.css(".hnuser").first.text,
-          "text" => p.css(".comment .c00").first.to_html,
-          "date" => p.css(".age").first.text.strip
-        } rescue nil
-      end.compact
-
-      if url = next_page(html)
-        html = Nokogiri::HTML.parse(HTTParty.get(url).body)
-      else
-        return @comments
-      end
-    }
-  end
-
-  def next_page(html)
-    link = html.css(".title a").detect { |x| x.text == "More" }
-    "https://news.ycombinator.com/#{link["href"]}" if link
   end
 end
