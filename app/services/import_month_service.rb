@@ -11,9 +11,9 @@ class ImportMonthService
     month = Month.find_or_create_by!(number: @number, api_id: @api_id)
     return unless month
 
-    month.comments.destroy_all
-
     html_comments = CommentsParser.new(month.url).call
+
+    month.comments.destroy_all
 
     html_comments.each do |comment|
       published_at = Chronic.parse(comment['date'])
