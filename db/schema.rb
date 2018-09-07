@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_063513) do
+ActiveRecord::Schema.define(version: 2018_09_07_132841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_063513) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "comments_count", default: 0
+    t.index ["number"], name: "index_months_on_number"
   end
 
 end

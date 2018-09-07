@@ -190,3 +190,21 @@ code {
 .center {
   text-align: center;
 }
+
+.next-button {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.next-button a.btn {
+  color: $green;
+  border-color: $green;
+  width: 90%;
+  max-width: 500px;
+  font-size: 18px;
+  padding: 10px 20px;
+}
+
+.next-button a.btn:hover {
+  background-color: #e0f2f1
+}

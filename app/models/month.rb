@@ -4,6 +4,10 @@ class Month < ActiveRecord::Base
 
   has_many :comments
 
+  def previous_month
+    Month.order(number: :desc).where('number < ?', number).first
+  end
+
   def post_id=(post_id)
     self.url = "https://news.ycombinator.com/item?id=#{post_id}"
   end
