@@ -1,6 +1,5 @@
 HNHiring = {
   initialize: function(){
-    this.zebrify();
     this.bind_events();
   },
 
