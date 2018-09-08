@@ -179,15 +179,19 @@ code {
   text-align: center;
 }
 
+.next-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 a.next.btn {
   margin-top: 20px;
   margin-bottom: 40px;
   color: $green;
   border-color: $green;
-  width: 90%;
-  max-width: 500px;
   font-size: 18px;
   text-align: center;
+  width: 100%;
   display: block;
 }
 
