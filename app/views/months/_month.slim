@@ -1,5 +1,6 @@
-h3.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
-.center.page-subtitle #{@month.comments_count} jobs found
+.container
+  h3.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
+  .center.page-subtitle #{@month.comments_count} jobs found
 
 ul.comments
   - @comments.each_with_index do |comment, index|
