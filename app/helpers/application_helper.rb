@@ -1,6 +1,6 @@
 module ApplicationHelper
   def default_title
-    "Compilation of Hacker News 'Who is Hiring?' Posts"
+    "All Jobs From Hacker News 'Who is Hiring?' Posts"
   end
 
   def comment_timestamp(timestamp)
