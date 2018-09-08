@@ -191,20 +191,17 @@ code {
   text-align: center;
 }
 
-.next-button {
-  margin-top: 40px;
+a.next.btn {
+  margin-top: 20px;
   margin-bottom: 40px;
-}
-
-.next-button a.btn {
   color: $green;
   border-color: $green;
   width: 90%;
   max-width: 500px;
   font-size: 18px;
-  padding: 10px 20px;
+  text-align: center;
 }
 
-.next-button a.btn:hover {
+a.next.btn:hover {
   background-color: #e0f2f1
 }

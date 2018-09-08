@@ -11,5 +11,5 @@ ul.comments
         = comment.description.html_safe
 
 - if @previous_month
-  .center.next-button
-    = link_to "View #{@previous_month.name} Post", month_path(@previous_month.number), class: 'btn'
+  .center
+    = link_to "View #{@previous_month.name} Post", month_path(@previous_month.number), class: 'next btn'
