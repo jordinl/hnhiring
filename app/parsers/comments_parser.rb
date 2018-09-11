@@ -13,7 +13,8 @@ class CommentsParser
         {
           "username" => p.css(".hnuser").first.text,
           "text" => p.css(".comment .c00").first.to_html,
-          "date" => p.css(".age").first.text.strip
+          "date" => p.css(".age").first.text.strip,
+          "id" => p.css(".age a").first['href'].split('=')[1]
         } rescue nil
       end.compact
 

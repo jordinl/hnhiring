@@ -13,12 +13,12 @@ class ImportMonthService
 
     html_comments = CommentsParser.new(month.url).call
 
-    month.comments.destroy_all
-
-    html_comments.each do |comment|
-      published_at = Chronic.parse(comment['date'])
-      description = format(comment['text'])
-      month.comments.create!(description: description, username: comment['username'], published_at: published_at)
+    html_comments.each do |html_comment|
+      comment = month.comments.find_or_initialize_by(api_id: html_comment['id'])
+      comment.published_at ||= Chronic.parse(html_comment['date'])
+      comment.username = html_comment['username']
+      comment.description = format(html_comment['text'])
+      comment.save! if comment.changed?
     end
   end
 
