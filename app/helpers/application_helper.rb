@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def comment_timestamp(timestamp)
-    timestamp < 24.hours.ago ? timestamp.to_date : time_ago_in_words(timestamp)
+    timestamp < 24.hours.ago ? timestamp.to_date : "#{time_ago_in_words(timestamp)} ago"
   end
 end
