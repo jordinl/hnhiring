@@ -36,7 +36,7 @@ a.active {
 
 .navbar {
   background: #2c3e50;
-  font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .navbar .navbar-header {
@@ -47,6 +47,7 @@ a.active {
 .navbar .navbar-header a {
   color: white;
   text-decoration: none !important;
+  font-size: 18px;
 
   &:hover {
     color: $green;
