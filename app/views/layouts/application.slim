@@ -8,9 +8,8 @@ html
     title HNHIRING - #{content_for?(:title) ? yield(:title) : default_title}
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
     link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
-    = stylesheet_link_tag    "application", media: "all"
-    = javascript_include_tag "application"
-
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application', async: !Rails.env.development?
     = render partial: 'layouts/analytics'
 
   body.index
