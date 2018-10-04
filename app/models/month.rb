@@ -4,6 +4,8 @@ class Month < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
+  before_create :set_slug
+
   def url
     return unless api_id
     @url ||= "https://news.ycombinator.com/item?id=#{api_id}"
@@ -27,5 +29,15 @@ class Month < ActiveRecord::Base
 
   def year
     number / 100
+  end
+
+  def to_param
+    slug
+  end
+
+  private
+
+  def set_slug
+    self.slug = "#{Date::MONTHNAMES[month].downcase}-#{year}"
   end
 end
