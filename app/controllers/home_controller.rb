@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def show
-    @month = Month.order(:number).last
-    @comments = @month.comments.order(published_at: :desc)
-    @previous_month = @month.previous_month
+    @months = Month.select('months.*, max(published_at) as published_at')
+                .joins(:comments)
+                .group(:id)
+                .order(number: :desc)
   end
 end
