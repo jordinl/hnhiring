@@ -1,6 +1,6 @@
-$(document).ready(function () {
+$(document).on('turbolinks:load', function () {
   $('[data-load-comment]').each(function() {
     var $comment = $(this);
-    setTimeout(function () { $comment.removeClass('hidden')}, 20)
+    setTimeout(function () { $comment.removeClass('hidden') }, 20)
   })
 })

@@ -155,6 +155,9 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.1)
+    turbolinks (5.1.1)
+      turbolinks-source (~> 5.1)
+    turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -181,6 +184,7 @@ DEPENDENCIES
   rinku
   sass-rails
   slim-rails
+  turbolinks
   uglifier
 
 RUBY VERSION

@@ -1,16 +1,17 @@
 source 'http://rubygems.org'
-ruby "2.4.1"
+ruby '2.4.1'
 
 gem 'bootsnap'
-gem 'rails', '~> 5.2.0'
-gem 'slim-rails'
+gem 'chronic'
+gem 'httparty'
+gem 'nokogiri'
 gem 'octicons_helper'
 gem 'pg'
 gem 'puma'
-gem 'nokogiri'
-gem 'httparty'
-gem 'chronic'
+gem 'rails', '~> 5.2.0'
 gem 'rinku'
+gem 'slim-rails'
+gem 'turbolinks'
 
 group :assets do
   gem 'sass-rails'
@@ -18,6 +19,6 @@ group :assets do
 end
 
 group :development do
-  gem 'pry'
   gem 'listen'
+  gem 'pry'
 end
