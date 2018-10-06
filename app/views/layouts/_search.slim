@@ -12,7 +12,7 @@
               strong Keywords (comma separated)
           .row.mb-4
             .col-12
-              form#searchForm(action=request.path autocomplete='off')
+              form#searchForm(action=(yield(:search_url) || request.path) autocomplete='off')
                 .input-group.mt-1
                   input.form-control type='text' name='q' value=params[:q]
       .modal-footer

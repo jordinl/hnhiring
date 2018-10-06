@@ -1,3 +1,5 @@
+- content_for(:search_url, search_path)
+
 ul.months
   - @months.each_with_index do |month, index|
     li.month(class="#{index % 2 == 0 ? '' : 'odd'}")
