@@ -1,20 +1,19 @@
-- cache @month
+.container
+  h1.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
+  .center.page-subtitle #{@comments.length} jobs found
+
+ul.comments
+  - @comments.each_with_index do |comment, index|
+    - data_wait = index < 200 ? {} : { 'data-load-comment' => true }
+    li.comment(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 200 ? '' : 'hidden'}" *data_wait)
+      .container
+        .user
+          a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
+          span.date.right.type-info= comment_timestamp(comment.published_at)
+        = comment.description.html_safe
+
+- if @previous_month
   .container
-    h1.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
-    .center.page-subtitle #{@comments.length} jobs found
-
-  ul.comments
-    - @comments.each_with_index do |comment, index|
-      - data_wait = index < 200 ? {} : { 'data-load-comment' => true }
-      li.comment(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 200 ? '' : 'hidden'}" *data_wait)
-        .container
-          .user
-            a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
-            span.date.right.type-info= comment_timestamp(comment.published_at)
-          = comment.description.html_safe
-
-  - if @previous_month
-    .container
-      .row
-        .col-12.col-sm-9.col-lg-6.col-xl-6.next-container
-          = link_to "View #{@previous_month.name} Jobs", month_path(@previous_month, request.query_parameters), class: 'next btn'
+    .row
+      .col-12.col-sm-9.col-lg-6.col-xl-6.next-container
+        = link_to "View #{@previous_month.name} Jobs", month_path(@previous_month, request.query_parameters), class: 'next btn'

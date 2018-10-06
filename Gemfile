@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 ruby "2.4.1"
 
 gem 'bootsnap'
-gem 'dalli'
 gem 'rails', '~> 5.2.0'
 gem 'slim-rails'
 gem 'octicons_helper'
