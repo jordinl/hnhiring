@@ -1,0 +1,20 @@
+#searchModal.modal.fade role='dialog' tabindex="-1"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        h5.modal-title Search Jobs
+        button.close aria-label='Close' data-dismiss='modal' type='button'
+          span  &times;
+      .modal-body
+        .container-fluid
+          .row.mt-3
+            .col-12
+              strong Keywords (comma separated)
+          .row.mb-4
+            .col-12
+              form#searchForm(action=request.path autocomplete='off')
+                .input-group.mt-1
+                  input.form-control type='text' name='q' value=params[:q]
+      .modal-footer
+        button.btn.btn-secondary data-dismiss='modal' type='button' Close
+        button.btn.btn-primary data-submit='#searchForm' type='button' Search

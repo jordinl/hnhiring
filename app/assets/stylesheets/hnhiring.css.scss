@@ -1,11 +1,5 @@
 $green: #18bc9c;
 
-@media (max-width: 768px) {
-  .show-large {
-    display: none;
-  }
-}
-
 body {
   overflow-x: hidden;
 }
@@ -19,10 +13,6 @@ br {
 p {
   margin-top: 15px;
   margin-bottom: 15px;
-}
-
-p.small {
-  font-size: 16px;
 }
 
 a,
@@ -67,8 +57,7 @@ a.active {
   outline: 0;
 }
 
-.navbar-default,
-.navbar-inverse {
+.navbar-default {
   border: 0;
 }
 
@@ -128,17 +117,10 @@ code {
   white-space: pre-line;
 }
 
-.title, .filter {
+.title {
   color: white;
   font-size: 16px;
   margin-top: 7px;
-}
-
-.filter {
-  color: black;
-  font-size: 12px;
-  margin-left: 7px;
-  margin-top: 2px;
 }
 
 .title a {
@@ -149,10 +131,6 @@ code {
 
 .title a:hover {
   text-decoration: underline;
-}
-
-.highlight {
-  background-color: yellow;
 }
 
 .left {
@@ -208,4 +186,9 @@ a.next.btn {
 
 a.next.btn:hover {
   background-color: #e0f2f1
+}
+
+.search-icon {
+  margin-top: 6px;
+  height: 26px;
 }
