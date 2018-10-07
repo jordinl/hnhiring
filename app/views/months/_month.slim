@@ -9,7 +9,7 @@ ul.comments
       .container
         .user
           a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
-          span.date.right.type-info= comment_timestamp(comment.published_at)
+          span.gray.right.type-info= comment_timestamp(comment.published_at)
         = comment.description.html_safe
 
 - if @previous_month

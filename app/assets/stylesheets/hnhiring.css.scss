@@ -1,18 +1,31 @@
 $green: #18bc9c;
 
+html {
+  font-size: 1rem;
+}
+
+@media (min-width: 577px) {
+  html {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+h1 {
+  font-size: 1.7em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
 body {
   overflow-x: hidden;
-}
-
-br {
-  content: " ";
-  display: block;
-  margin: 0.5em;
-}
-
-p {
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 a,
@@ -37,7 +50,6 @@ a.active {
 .navbar .navbar-header a {
   color: white;
   text-decoration: none !important;
-  font-size: 18px;
 
   &:hover {
     color: $green;
@@ -68,7 +80,6 @@ a.active {
 ul.comments, ul.months {
   list-style: none;
   padding: 0;
-  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -86,21 +97,12 @@ li.month {
   margin-bottom: 8px;
 }
 
-li.comment a {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
-  word-break: break-word;
-
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+li.comment p {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 .user a {
@@ -109,7 +111,7 @@ li.comment a {
   font-weight: bold;
 }
 
-.user .date {
+.gray {
   color: #767676;
 }
 
@@ -119,7 +121,7 @@ code {
 
 .title {
   color: white;
-  font-size: 16px;
+  font-size: 1.1rem;
   margin-top: 7px;
 }
 
@@ -150,7 +152,6 @@ code {
 }
 
 .page-title {
-  font-size: 32px;
   margin-top: 30px;
   color: #424242;
 }
@@ -160,8 +161,8 @@ code {
 }
 
 .page-subtitle {
-  color: #767676;
-  font-size: 20px;
+  @extend .gray;
+  font-size: 1.1em;
 }
 
 .center {
@@ -178,7 +179,6 @@ a.next.btn {
   margin-bottom: 40px;
   color: $green;
   border-color: $green;
-  font-size: 18px;
   text-align: center;
   width: 100%;
   display: block;
