@@ -97,12 +97,14 @@ li.month {
   margin-bottom: 8px;
 }
 
+li.comment .container {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
 li.comment p {
   margin-top: 15px;
   margin-bottom: 15px;
-  width: 100%;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
 }
 
 .comment .user {
