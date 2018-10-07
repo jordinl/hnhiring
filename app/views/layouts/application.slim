@@ -16,12 +16,12 @@ html
 
   body.index
     nav.navbar.navbar-default.navbar-fixed-top
-      .navbar-header.page-scroll
+      .navbar-header
         h2.title.left
           = link_to 'HNHIRING', '/'
           span.green<> - by -
           a(href='http://jordinl.com') Jordi Noguera
-        = link_to octicon('search', height: 26, fill: 'white'), '#', class: 'right search-icon',
+        = link_to octicon('search', height: '100%', width: '100%', fill: 'white'), '#', class: 'right search-icon',
                 'data-target' => '#searchModal', 'data-toggle' => 'modal'
     = yield
     = render 'layouts/search'
