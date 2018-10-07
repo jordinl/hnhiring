@@ -105,7 +105,11 @@ li.comment p {
   text-overflow: ellipsis;
 }
 
-.user a {
+.comment .user {
+  margin-bottom: 15px;
+}
+
+.comment .user a {
   text-decoration: underline;
   color: $green;
   font-weight: bold;

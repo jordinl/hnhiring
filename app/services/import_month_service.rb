@@ -30,6 +30,6 @@ class ImportMonthService
   end
 
   def format(comment)
-    Rinku.auto_link(simple_format(sanitize(comment, tags: %w(strong em a p)).gsub!("\n", '')))
+    Rinku.auto_link(sanitize(comment, tags: %w(strong em a p)).squish!)
   end
 end
