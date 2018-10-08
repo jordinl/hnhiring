@@ -81,11 +81,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    octicons (8.1.0)
-      nokogiri (>= 1.6.3.1)
-    octicons_helper (8.1.0)
-      octicons (= 8.1.0)
-      rails
     pg (0.18.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -176,7 +171,6 @@ DEPENDENCIES
   httparty
   listen
   nokogiri
-  octicons_helper
   pg
   pry
   puma

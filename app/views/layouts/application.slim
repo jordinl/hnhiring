@@ -22,7 +22,7 @@ html
           = link_to 'HNHIRING', '/'
           span.green<> - by -
           a(href='http://jordinl.com') Jordi Noguera
-        = link_to octicon('search', height: '100%', width: '100%', fill: 'white'), '#', class: 'right search-icon',
-                'data-target' => '#searchModal', 'data-toggle' => 'modal'
+        = link_to '#', class: 'right search-icon', 'data-target' => '#searchModal', 'data-toggle' => 'modal' do
+          i.fas.fa-search
     = yield
     = render 'layouts/search'
