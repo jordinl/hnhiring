@@ -107,6 +107,14 @@ li.comment p {
   margin-bottom: 15px;
 }
 
+li.comment.collapsed .body p {
+  display: none;
+
+  &:first-child, &:nth-child(2) {
+    display: block;
+  }
+}
+
 .comment .user {
   margin-bottom: 15px;
 }
@@ -115,6 +123,13 @@ li.comment p {
   text-decoration: underline;
   color: $green;
   font-weight: bold;
+}
+
+.comment a.bordered {
+  padding: 5px 10px;
+  border-radius: 25px;
+  border: 1px solid $green;
+  font-size: 14px;
 }
 
 .gray {

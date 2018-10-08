@@ -9,7 +9,8 @@ ul.comments
         .user
           a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
           span.gray.right.type-info= comment_timestamp(comment.published_at)
-        = comment.description.html_safe
+        .body= comment.description.html_safe
+        p.center= link_to 'Show More', '#', 'data-toggle-collapsed' => '.comment'
 
 - if @previous_month
   .container
