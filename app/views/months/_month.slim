@@ -4,13 +4,21 @@
 
 ul.comments
   - @comments.each_with_index do |comment, index|
-    li.comment(class="#{index % 2 == 0 ? '' : 'odd'} collapsed")
+    li.comment(class="#{index % 2 == 0 ? '' : 'odd'} collapsed" id="comment-#{comment.id}")
       .container
         .user
           a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
           span.gray.right.type-info= comment_timestamp(comment.published_at)
         .body= comment.description.html_safe
-        p.center= link_to 'Show More', '#', 'data-toggle-collapsed' => '.comment'
+        .toggle-collapsed-button
+          = link_to '#', 'data-toggle-collapsed' => "#comment-#{comment.id}" do
+            .more
+              | Show More
+              i.fas.fa-chevron-down
+            .less
+              | Show Less
+              i.fas.fa-chevron-up
+
 
 - if @previous_month
   .container
