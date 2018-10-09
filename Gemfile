@@ -8,7 +8,6 @@ gem 'nokogiri'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.2.0'
-gem 'rinku'
 gem 'slim-rails'
 gem 'turbolinks'
 
