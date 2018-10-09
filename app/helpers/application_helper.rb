@@ -3,7 +3,7 @@ module ApplicationHelper
     "All Jobs From Hacker News 'Who is Hiring?' Posts"
   end
 
-  def comment_timestamp(timestamp)
+  def job_timestamp(timestamp)
     timestamp < 24.hours.ago ? timestamp.to_date : "#{time_ago_in_words(timestamp)} ago"
   end
 end

@@ -6,4 +6,4 @@ ul.months
       .container
         h2.center= link_to "Who is hiring? - #{month.to_s}", month_path(month)
         .center.published-at Updated on #{month.published_at.to_date.to_s(:long)}
-        .center.gray #{month.comments_count} jobs found
+        .center.gray #{month.jobs_count} jobs found

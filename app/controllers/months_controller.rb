@@ -14,9 +14,9 @@ class MonthsController < ApplicationController
   private
 
   def show_month
-    @comments = @month.comments.order(published_at: :desc)
+    @jobs = @month.jobs.order(published_at: :desc)
     search_keywords.each do |keyword|
-      @comments.where!('description::varchar ILIKE ?', "%#{keyword}%")
+      @jobs.where!('description::varchar ILIKE ?', "%#{keyword}%")
     end
     @previous_month = @month.previous_month
   end

@@ -1,19 +1,19 @@
 .container
   h1.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
-  .center.page-subtitle #{@comments.length} jobs found
-  - if @comments.length > 100
+  .center.page-subtitle #{@jobs.length} jobs found
+  - if @jobs.length > 100
     .center.show-all
       | Showing 100 results -
-      =< link_to 'Show All', '#', 'data-show-all' => '.comment.hidden', rel: 'nofollow'
+      =< link_to 'Show All', '#', 'data-show-all' => '.job.hidden', rel: 'nofollow'
 
-ul.comments
-  - @comments.each_with_index do |comment, index|
-    li.comment(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 100 ? '' : 'hidden'}")
+ul.jobs
+  - @jobs.each_with_index do |job, index|
+    li.job(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 100 ? '' : 'hidden'}")
       .container
         .user
-          a(href="https://news.ycombinator.com/user?id=#{comment.username}" rel='nofollow')= comment.username
-          span.gray.right.type-info= comment_timestamp(comment.published_at)
-        .body= comment.description.html_safe
+          a(href="https://news.ycombinator.com/user?id=#{job.username}" rel='nofollow')= job.username
+          span.gray.right.type-info= job_timestamp(job.published_at)
+        .body= job.description.html_safe
 
 - if @previous_month
   .container

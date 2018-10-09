@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_121907) do
+ActiveRecord::Schema.define(version: 2018_10_09_164429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", id: :serial, force: :cascade do |t|
+  create_table "jobs", id: :serial, force: :cascade do |t|
     t.text "description"
     t.datetime "published_at"
     t.string "username"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2018_10_09_121907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_id"
-    t.index ["api_id"], name: "index_comments_on_api_id"
-    t.index ["month_id"], name: "index_comments_on_month_id"
+    t.index ["api_id"], name: "index_jobs_on_api_id"
+    t.index ["month_id"], name: "index_jobs_on_month_id"
   end
 
   create_table "months", id: :serial, force: :cascade do |t|
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_121907) do
     t.string "api_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "comments_count", default: 0
+    t.integer "jobs_count", default: 0
     t.string "slug"
     t.index ["number"], name: "index_months_on_number"
     t.index ["slug"], name: "index_months_on_slug", unique: true

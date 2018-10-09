@@ -9,11 +9,11 @@ class ImportMonthService
     html_comments = CommentsParser.new(@month.url).call
 
     html_comments.each do |html_comment|
-      comment = @month.comments.find_or_initialize_by(api_id: html_comment['id'])
-      comment.published_at ||= Chronic.parse(html_comment['date'])
-      comment.username = html_comment['username']
-      comment.description = DescriptionFormatter.call(html_comment['text'])
-      comment.save! if comment.changed?
+      job = @month.jobs.find_or_initialize_by(api_id: html_comment['id'])
+      job.published_at ||= Chronic.parse(html_comment['date'])
+      job.username = html_comment['username']
+      job.description = DescriptionFormatter.call(html_comment['text'])
+      job.save! if job.changed?
     end
   end
 

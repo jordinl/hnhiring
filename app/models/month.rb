@@ -2,7 +2,7 @@ class Month < ActiveRecord::Base
   validates :number, :api_id, presence: true
   validates :number, uniqueness: true
 
-  has_many :comments, dependent: :destroy
+  has_many :jobs, dependent: :destroy
 
   before_create :set_slug
 

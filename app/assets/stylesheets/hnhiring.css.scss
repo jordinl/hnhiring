@@ -77,13 +77,13 @@ a.active {
   background-color: #FBF3E9;
 }
 
-ul.comments, ul.months {
+ul.jobs, ul.months {
   list-style: none;
   padding: 0;
   margin-bottom: 20px;
 }
 
-li.comment {
+li.job {
   margin: 0;
   padding: 25px 5px 15px;
 }
@@ -97,18 +97,18 @@ li.month {
   margin-bottom: 8px;
 }
 
-li.comment .body p {
+li.job .body p {
   overflow-x: hidden;
   text-overflow: ellipsis;
   display: block;
 }
 
-li.comment p {
+li.job p {
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.comment .user a {
+.job .user a {
   text-decoration: underline;
   color: $green;
   font-weight: bold;
