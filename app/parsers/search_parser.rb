@@ -7,5 +7,4 @@ class SearchParser
 
     link.attr("href").split("=")[1] if link
   end
-
 end
