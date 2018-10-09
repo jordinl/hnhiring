@@ -4,14 +4,14 @@
   - if @comments.length > 100
     .center.show-all
       | Showing 100 results -
-      =< link_to 'Show All', '#', 'data-show-all' => '.comment.hidden'
+      =< link_to 'Show All', '#', 'data-show-all' => '.comment.hidden', rel: 'nofollow'
 
 ul.comments
   - @comments.each_with_index do |comment, index|
     li.comment(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 100 ? '' : 'hidden'}")
       .container
         .user
-          a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
+          a(href="https://news.ycombinator.com/user?id=#{comment.username}" rel='nofollow')= comment.username
           span.gray.right.type-info= comment_timestamp(comment.published_at)
         .body= comment.description.html_safe
 

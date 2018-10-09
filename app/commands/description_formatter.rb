@@ -10,7 +10,7 @@ class DescriptionFormatter
   end
 
   def call
-    sanitized = sanitize(@text, tags: %w(strong em a p))
+    sanitized = sanitize(@text, tags: %w(strong em a p), attributes: %w(rel href))
     html = ''
     paragraph = ''
     Nokogiri::HTML.fragment(sanitized).children.each do |node|
