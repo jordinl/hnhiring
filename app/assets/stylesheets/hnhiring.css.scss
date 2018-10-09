@@ -102,57 +102,9 @@ li.comment .container {
   text-overflow: ellipsis;
 }
 
-li.comment .body {
-  overflow: hidden;
-}
-
 li.comment p {
   margin-top: 15px;
   margin-bottom: 15px;
-}
-
-li.comment.collapsed .body p {
-  display: none;
-
-  &:first-child, &:nth-child(2) {
-    display: block;
-  }
-}
-
-li.comment .toggle-collapsed-button {
-  overflow: hidden;
-  padding-bottom: 15px;
-
-  a {
-    color: #565656;
-    font-size: 0.95em;
-    text-decoration: none;
-  }
-
-  a i {
-    font-size: 0.9em;
-    margin-left: 5px;
-  }
-}
-
-li.comment .toggle-collapsed-button {
-  .more {
-    display: none;
-  }
-
-  .less {
-    display: block;
-  }
-}
-
-li.comment.collapsed .toggle-collapsed-button {
-  .more {
-    display: block;
-  }
-
-  .less {
-    display: none;
-  }
 }
 
 .comment .user a {
@@ -161,19 +113,8 @@ li.comment.collapsed .toggle-collapsed-button {
   font-weight: bold;
 }
 
-.comment a.bordered {
-  padding: 5px 10px;
-  border-radius: 25px;
-  border: 1px solid $green;
-  font-size: 14px;
-}
-
 .gray {
   color: #767676;
-}
-
-code {
-  white-space: pre-line;
 }
 
 .title {
@@ -199,7 +140,7 @@ code {
   float: right;
 }
 
-.hidden, .reply {
+.hidden {
   display: none;
 }
 
@@ -253,4 +194,8 @@ a.next.btn:hover {
 .turbolinks-progress-bar {
   height: 5px;
   background-color: #007bff;
+}
+
+.show-all {
+  margin-top: 5px;
 }

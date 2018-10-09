@@ -1,24 +1,19 @@
 .container
   h1.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
   .center.page-subtitle #{@comments.length} jobs found
+  - if @comments.length > 100
+    .center.show-all
+      | Showing 100 results -
+      =< link_to 'Show All', '#', 'data-show-all' => '.comment.hidden'
 
 ul.comments
   - @comments.each_with_index do |comment, index|
-    li.comment(class="#{index % 2 == 0 ? '' : 'odd'} collapsed" id="comment-#{comment.id}")
+    li.comment(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 100 ? '' : 'hidden'}")
       .container
         .user
           a(href="https://news.ycombinator.com/user?id=#{comment.username}")= comment.username
           span.gray.right.type-info= comment_timestamp(comment.published_at)
         .body= comment.description.html_safe
-        .toggle-collapsed-button
-          = link_to '#', 'data-toggle-collapsed' => "#comment-#{comment.id}" do
-            .more
-              | Show More
-              i.fas.fa-chevron-down
-            .less
-              | Show Less
-              i.fas.fa-chevron-up
-
 
 - if @previous_month
   .container
