@@ -1,17 +1,17 @@
 $green: #18bc9c;
 
-html {
-  font-size: 1rem;
+body {
+  font-size: 1.1rem;
 }
 
 @media (min-width: 577px) {
-  html {
+  body {
     font-size: 1.1rem;
   }
 }
 
 @media (min-width: 769px) {
-  html {
+  body {
     font-size: 1.2rem;
   }
 }
@@ -117,19 +117,28 @@ li.comment p {
   color: #767676;
 }
 
-.title {
+nav .title {
+  margin: 0;
   color: white;
-  font-size: 1.1rem;
-  margin-top: 7px;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+  padding: 0.5rem 0;
 }
 
-.title a {
+nav .title a {
   text-decoration: none;
   color: #27B33C;
 }
 
-.title a:hover {
+nav .title a:hover {
   text-decoration: underline;
+}
+
+nav .search-icon {
+  font-size: 1.3rem;
+  line-height: 1.3rem;
+  color: white !important;
+  padding: 0.6rem 0 0.4rem;
 }
 
 .left {
@@ -183,12 +192,6 @@ a.next.btn {
 
 a.next.btn:hover {
   background-color: #e0f2f1
-}
-
-.search-icon {
-  margin-top: 3px;
-  font-size: 1.3em;
-  color: white !important;
 }
 
 .turbolinks-progress-bar {
