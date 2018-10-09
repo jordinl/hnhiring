@@ -97,9 +97,10 @@ li.month {
   margin-bottom: 8px;
 }
 
-li.comment .container {
+li.comment .body p {
   overflow-x: hidden;
   text-overflow: ellipsis;
+  display: block;
 }
 
 li.comment p {
