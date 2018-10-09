@@ -1,6 +1,7 @@
 class MonthsController < ApplicationController
   def show
     @month = Month.find_by!(slug: params[:id])
+    @last_month = @month.id == Month.order(:number).pluck(:id).last
     show_month
   end
 

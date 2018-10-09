@@ -1,4 +1,5 @@
 - content_for(:title, "All jobs from Hacker News 'Who is hiring? (#{@month.to_s})' post")
 - content_for(:keywords, @month.name)
+- content_for(:search_url, search_path) if @last_month
 
 = render 'months/month'
