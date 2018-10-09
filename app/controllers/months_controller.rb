@@ -18,6 +18,7 @@ class MonthsController < ApplicationController
     search_keywords.each do |keyword|
       @jobs.where!('description::varchar ILIKE ?', "%#{keyword}%")
     end
+    @jobs.joins!(:technologies).where!(technologies: { slug: technology_keywords }) if technology_keywords.present?
     @previous_month = @month.previous_month
   end
 end
