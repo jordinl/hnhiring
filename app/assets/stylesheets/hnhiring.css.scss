@@ -203,3 +203,13 @@ a.next.btn:hover {
 .show-all {
   margin-top: 5px;
 }
+
+.technologies {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2rem;
+}
+
+.technologies tr td:first-child {
+  padding-right: 3px;
+}

@@ -4,5 +4,7 @@ class HomeController < ApplicationController
                 .joins(:jobs)
                 .group(:id)
                 .order(number: :desc)
+
+    @top_technologies = Technology.order(jobs_count: :desc)
   end
 end

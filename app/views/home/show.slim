@@ -7,3 +7,15 @@ ul.months
         h2.center= link_to "Who is hiring? - #{month.to_s}", month_path(month)
         .center.published-at Updated on #{month.published_at.to_date.to_s(:long)}
         .center.gray #{month.jobs_count} jobs found
+
+.container.mb-5
+  .row
+    .col-12.mb-3.mt-2
+      h2.center Technologies
+    .col-12
+      table.technologies
+        tbody
+          - @top_technologies.each_with_index do |technology, index|
+            tr
+              td #{index + 1}.
+              td= link_to "#{technology.jobs_count} #{technology.name} jobs", technology_path(technology)

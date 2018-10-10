@@ -27,6 +27,10 @@ class Technology < ActiveRecord::Base
       label: 'Elixir',
       finder: -> { Job.matching_words(%w(elixir)) }
     },
+    elm: {
+      label: 'Elm',
+      finder: -> { Job.matching_words(%w(elm)) }
+    },
     ios: {
       label: 'iOS',
       finder: -> { Job.matching_words(%w(ios)) }
@@ -83,5 +87,9 @@ class Technology < ActiveRecord::Base
       end
       technology.job_technologies.joins(:job).where.not(jobs: { id: jobs_scope }).destroy_all
     end
+  end
+
+  def to_param
+    slug
   end
 end
