@@ -1,5 +1,5 @@
 .container
-  h1.center.page-title= link_to "Who is hiring? - #{@month.to_s}", @month.url
+  h1.center.page-title= title
   .center.page-subtitle #{@jobs.length} jobs found
   - if @jobs.length > 100
     .center.show-all
@@ -15,8 +15,8 @@ ul.jobs
           span.gray.right.type-info= job_timestamp(job.published_at)
         .body= job.description.html_safe
 
-- if @previous_month
+- if next_path
   .container
     .row
       .col-12.col-sm-9.col-lg-6.col-xl-6.next-container
-        = link_to "View #{@previous_month.name} Jobs", month_path(@previous_month, request.query_parameters), class: 'next btn'
+        = link_to "View #{@previous_month.name} Jobs", next_path, class: 'next btn'

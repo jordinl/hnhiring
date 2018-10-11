@@ -12,8 +12,8 @@
               strong Keywords (comma separated)
           .row.mb-4
             .col-12
-              form#searchForm(action=(yield(:search_url) || request.path) autocomplete='off')
-                = hidden_field_tag :technologies, params[:technologies]
+              form#searchForm(action=search_path autocomplete='off')
+                = hidden_field_tag :technologies, technology_keywords.join(',')
                 .input-group.mt-1
                   input.form-control type='text' name='q' value=params[:q]
           .row.mt-2

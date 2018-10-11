@@ -1,0 +1,6 @@
+- content_for(:title, "All jobs from Hacker News 'Who is hiring? (#{@month.to_s})' post")
+- content_for(:keywords, @month.name)
+
+= render 'jobs/jobs',
+        title: link_to("#{@month.to_s} Jobs", @month.url),
+        next_path: @previous_month && month_path(@previous_month, request.query_parameters)

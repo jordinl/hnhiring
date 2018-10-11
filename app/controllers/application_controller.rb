@@ -12,7 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def technology_keywords
-    return [] if params[:technologies].blank?
-    @technology_keywords ||= params[:technologies].split(',').map(&:squish!)
+    return [] if params[:technologies].blank? && params[:technology].blank?
+    @technology_keywords ||= [params[:technologies], [params[:technology]]]
+                               .select(&:present?)
+                               .join(',')
+                               .split(',')
+                               .map(&:squish!)
   end
 end
