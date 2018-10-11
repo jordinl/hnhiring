@@ -2,5 +2,5 @@
 - content_for(:keywords, @month.name)
 
 = render 'jobs/jobs',
-        title: "#{technology_name(@technology)} Jobs - #{@month.name}",
+        title: "#{technology_name(@technology)} Jobs - #{@month}",
         next_path: @previous_month && technology_month_path(params[:technology], @previous_month.slug, request.query_parameters)

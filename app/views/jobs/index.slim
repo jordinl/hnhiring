@@ -2,5 +2,5 @@
 - content_for(:keywords, @month.name)
 
 = render 'jobs/jobs',
-        title: link_to("#{@month.to_s} Jobs", @month.url),
+        title: link_to("#{@month} Jobs", @month.url),
         next_path: @previous_month && month_path(@previous_month, request.query_parameters)
