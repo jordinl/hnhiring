@@ -1,0 +1,8 @@
+en:
+  technologies:
+    cplusplus: C++
+    csharp: C#
+    ios: iOS
+    javascript: JavaScript
+    php: PHP
+    rails: Ruby on Rails

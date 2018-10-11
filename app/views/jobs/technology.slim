@@ -1,6 +1,6 @@
-- content_for(:title, "All #{@technology.name} jobs from Hacker News 'Who is hiring? (#{@month.to_s})' post")
+- content_for(:title, "All #{technology_name(@technology)} jobs from Hacker News 'Who is hiring? (#{@month.to_s})' post")
 - content_for(:keywords, @month.name)
 
 = render 'jobs/jobs',
-        title: "#{@technology.name} Jobs - #{@month.name}",
+        title: "#{technology_name(@technology)} Jobs - #{@month.name}",
         next_path: @previous_month && technology_month_path(params[:technology], @previous_month.slug, request.query_parameters)
