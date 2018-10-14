@@ -17,6 +17,7 @@ class Technology < ActiveRecord::Base
     php:        -> { Job.matching_words(%w(php)) },
     python:     -> { Job.matching_words(%w(python django)) },
     rails:      -> { Job.matching_words(%w(rails)) },
+    react:      -> { Job.matching_text('\yreact\y(?!(-|\s)native)').or(Job.matching_words(%w(reactjs))) },
     ruby:       -> { Job.matching_words(%w(ruby rails)) },
     rust:       -> { Job.matching_words(%w(rust)) },
     scala:      -> { Job.matching_words(%w(scala)) },
