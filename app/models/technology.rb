@@ -4,6 +4,7 @@ class Technology < ActiveRecord::Base
 
   DEFINITIONS = {
     android:    -> { Job.matching_words(%w(android)) },
+    angular:    -> { Job.matching_words(%w(angular angularjs)) },
     clojure:    -> { Job.matching_words(%w(clojure)) },
     cplusplus:  -> { Job.matching_text(%w(c\+\+)) },
     csharp:     -> { Job.matching_text(%w(c#)) },
