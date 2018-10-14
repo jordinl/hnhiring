@@ -26,7 +26,7 @@ class Technology < ActiveRecord::Base
   def self.populate!
     Technology.where.not(slug: DEFINITIONS.keys).destroy_all
     DEFINITIONS.each do |slug, finder|
-      technology = find_or_create_by!(slug: slug, name: attributes.fetch(:label))
+      technology = find_or_create_by!(slug: slug)
       jobs_scope = finder.call
       jobs_scope.where.not(id: technology.jobs).find_each do |job|
         job.technologies << technology
