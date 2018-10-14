@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def show
-    @months = Month.select('months.*, max(published_at) as published_at')
-                .joins(:jobs)
-                .group(:id)
-                .order(number: :desc)
+    @last_month = Month.order(:number).last
+    @first_month = Month.order(:number).first
+    @jobs_count = Job.count
+    @next_post_time = NextHiringPost.call
 
     @top_technologies = Technology.order(jobs_count: :desc)
   end

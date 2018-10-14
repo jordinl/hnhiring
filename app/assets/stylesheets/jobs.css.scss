@@ -1,0 +1,62 @@
+.jobs-page {
+  h1 {
+    font-size: 1.6em;
+  }
+
+  ul.jobs {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  li.job {
+    margin: 0;
+    padding: 25px 5px 15px;
+  }
+
+  li.month {
+    margin: 0;
+    padding: 40px 0;
+  }
+
+  .published-at {
+    margin-bottom: 8px;
+  }
+
+  li.job .body p {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+
+  li.job p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .job .user a {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .next-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  a.next.btn {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+
+  a.next.btn:hover {
+    background-color: #e0f2f1
+  }
+
+  .show-all {
+    margin-top: 5px;
+  }
+}

@@ -15,7 +15,7 @@ html
     = javascript_include_tag 'application', async: !Rails.env.development?
     = render partial: 'layouts/analytics'
 
-  body.index
+  body(class= "#{controller_name}-page")
     nav.navbar.navbar-default.navbar-fixed-top
       .navbar-header
         h2.title.left

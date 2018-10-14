@@ -4,12 +4,6 @@ body {
   font-size: 1.1rem;
 }
 
-@media (min-width: 577px) {
-  body {
-    font-size: 1.1rem;
-  }
-}
-
 @media (min-width: 769px) {
   body {
     font-size: 1.2rem;
@@ -17,11 +11,15 @@ body {
 }
 
 h1 {
-  font-size: 1.7em;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 1.6em;
+  font-size: 1.7em;
+}
+
+h3 {
+  font-size: 1.4em;
 }
 
 body {
@@ -77,43 +75,6 @@ a.active {
   background-color: #FBF3E9;
 }
 
-ul.jobs, ul.months {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-li.job {
-  margin: 0;
-  padding: 25px 5px 15px;
-}
-
-li.month {
-  margin: 0;
-  padding: 40px 0;
-}
-
-.published-at {
-  margin-bottom: 8px;
-}
-
-li.job .body p {
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-  display: block;
-}
-
-li.job p {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-
-.job .user a {
-  text-decoration: underline;
-  color: $green;
-  font-weight: bold;
-}
-
 .gray {
   color: #767676;
 }
@@ -121,9 +82,9 @@ li.job p {
 nav .title {
   margin: 0;
   color: white;
-  font-size: 1.2rem;
-  line-height: 1.2rem;
-  padding: 0.5rem 0;
+  font-size: 1em;
+  line-height: 1em;
+  padding: 0.5em 0;
 }
 
 nav .title a {
@@ -136,10 +97,10 @@ nav .title a:hover {
 }
 
 nav .search-icon {
-  font-size: 1.3rem;
-  line-height: 1.3rem;
+  font-size: 1.1em;
+  line-height: 1.1em;
   color: white !important;
-  padding: 0.6rem 0 0.4rem;
+  padding: 0.4em 0 0.3rem;
 }
 
 .left {
@@ -156,6 +117,10 @@ nav .search-icon {
 
 .green {
   color: $green;
+}
+
+.border-green {
+  border-color: $green;
 }
 
 .page-title {
@@ -176,40 +141,28 @@ nav .search-icon {
   text-align: center;
 }
 
-.next-container {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-a.next.btn {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  color: $green;
-  border-color: $green;
-  text-align: center;
-  width: 100%;
-  display: block;
-}
-
-a.next.btn:hover {
-  background-color: #e0f2f1
-}
-
 .turbolinks-progress-bar {
   height: 5px;
   background-color: #007bff;
 }
 
-.show-all {
-  margin-top: 5px;
+hr.section-divider {
+  border: 0;
+  display: block;
+  overflow: visible;
+  color: black;
+  font-weight: bold;
+  font-size: 1.3em;
+  letter-spacing: 1em;
+  height: 1em;
+  width: 3em;
+  line-height: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  &::before {
+    content: '...';
+    vertical-align: top;
+  }
 }
 
-.technologies {
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1.2rem;
-}
-
-.technologies tr td:first-child {
-  padding-right: 3px;
-}

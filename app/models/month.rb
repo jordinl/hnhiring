@@ -35,6 +35,10 @@ class Month < ActiveRecord::Base
     slug
   end
 
+  def published_at
+    jobs.order(:published_at).last.published_at
+  end
+
   private
 
   def set_slug

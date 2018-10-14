@@ -1,21 +1,30 @@
 - content_for(:search_url, search_path)
 
-ul.months
-  - @months.each_with_index do |month, index|
-    li.month(class="#{index % 2 == 0 ? '' : 'odd'}")
-      .container
-        h2.center= link_to "Who is hiring? - #{month.to_s}", month_path(month)
-        .center.published-at Updated on #{month.published_at.to_date.to_s(:long)}
-        .center.gray #{month.jobs_count} jobs found
+.container.pb-5.pt-3.center
+  h1.page-title.mb-4 HNHIRING
+  p HNHIRING is an index of jobs from Hacker News' <em>Who is Hiring?</em> posts.
+  p It contains #{@jobs_count} job ads dating back to #{@first_month}.
 
-.container.mb-5
-  .row
-    .col-12.mb-3.mt-2
-      h2.center Technologies
-    .col-12
-      table.technologies
-        tbody
-          - @top_technologies.each_with_index do |technology, index|
-            tr
-              td #{index + 1}.
-              td= link_to "#{technology.jobs_count} #{technology_name(technology)} jobs", technology_path(technology)
+  hr.section-divider
+
+  p.mb-1 The latest post is:
+  .month
+    h2= link_to @last_month, @last_month
+    .published-at.mb-1 Updated on #{@last_month.published_at.to_date.to_s(:long)}
+    .gray #{@last_month.jobs_count} jobs found
+
+  hr.section-divider
+  .month
+    p.mb-1 Next Hiring post will go live on:
+    h3(data-format-datetime=@next_post_time)= @next_post_time.strftime('%a, %-d %b %Y at %-H:%M %Z')
+
+.odd
+  .container.pb-5.pt-5
+    h2.center Top Technologies
+
+    table.technologies.mt-3
+      tbody
+        - @top_technologies.each_with_index do |technology, index|
+          tr
+            td #{index + 1}.
+            td= link_to "#{technology.jobs_count} #{technology_name(technology)} jobs", technology_path(technology)

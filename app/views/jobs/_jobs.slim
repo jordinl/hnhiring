@@ -10,7 +10,7 @@ ul.jobs
   - @jobs.each_with_index do |job, index|
     li.job(class="#{index % 2 == 0 ? '' : 'odd'} #{index < 100 ? '' : 'hidden'}")
       .container
-        .user
+        .user.green
           a(href="https://news.ycombinator.com/user?id=#{job.username}" rel='nofollow')= job.username
           span.gray.right.type-info= job_timestamp(job.published_at)
         .body= job.description.html_safe
@@ -19,4 +19,4 @@ ul.jobs
   .container
     .row
       .col-12.col-sm-9.col-lg-6.col-xl-6.next-container
-        = link_to "View #{@previous_month.name} Jobs", next_path, class: 'next btn'
+        = link_to "View #{@previous_month.name} Jobs", next_path, class: 'next btn green border-green'
