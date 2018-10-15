@@ -5,6 +5,7 @@ class Job < ActiveRecord::Base
 
   validates :month_id, :description, :published_at, :username, :api_id, presence: true
 
+  scope :matching_text_sensitive, -> (text) { where('description ~ ?', text) }
   scope :matching_text, -> (text) { where('description ~* ?', text) }
   scope :matching_words, -> (words) do
     scope = nil

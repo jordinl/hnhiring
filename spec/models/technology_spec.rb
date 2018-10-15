@@ -13,5 +13,28 @@ RSpec.describe Technology do
       it_behaves_like :does_not_match_job_keyword, 'react-native'
       it_behaves_like :does_not_match_job_keyword, 'react native'
     end
+
+    describe 'C' do
+      subject { Technology::DEFINITIONS[:c] }
+
+      it_behaves_like :matches_job_keyword, 'C,'
+      it_behaves_like :matches_job_keyword, 'C.'
+      it_behaves_like :matches_job_keyword, 'C/C++'
+      it_behaves_like :matches_job_keyword, 'C, C++'
+      it_behaves_like :matches_job_keyword, 'C, C#'
+      it_behaves_like :matches_job_keyword, 'C, Objective-C'
+      it_behaves_like :does_not_match_job_keyword, 'c'
+      it_behaves_like :does_not_match_job_keyword, 'C.S'
+      it_behaves_like :does_not_match_job_keyword, 'Clojure'
+      it_behaves_like :does_not_match_job_keyword, 'C++'
+      it_behaves_like :does_not_match_job_keyword, 'C#'
+      it_behaves_like :does_not_match_job_keyword, 'Objective-C,'
+      it_behaves_like :does_not_match_job_keyword, 'objective-C,'
+      it_behaves_like :does_not_match_job_keyword, 'Objective C,'
+      it_behaves_like :does_not_match_job_keyword, 'objective C,'
+      it_behaves_like :does_not_match_job_keyword, 'objective C,'
+      it_behaves_like :does_not_match_job_keyword, 'obj C,'
+      it_behaves_like :does_not_match_job_keyword, 'obj-C,'
+    end
   end
 end
