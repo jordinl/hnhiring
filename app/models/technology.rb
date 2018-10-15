@@ -12,6 +12,7 @@ class Technology < ActiveRecord::Base
     django:         -> { Job.matching_words(%w(django)) },
     elixir:         -> { Job.matching_words(%w(elixir)) },
     elm:            -> { Job.matching_words(%w(elm)) },
+    ember:          -> { Job.matching_words(%w(ember emberjs)) },
     ios:            -> { Job.matching_words(%w(ios)) },
     java:           -> { Job.matching_words(%w(java)) },
     javascript:     -> { Job.matching_words(%w(javascript)) },
