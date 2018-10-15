@@ -5,35 +5,13 @@ RSpec.describe Technology do
     describe 'react' do
       subject { Technology::DEFINITIONS[:react] }
 
-      it 'returns jobs that include react' do
-        job = create(:job, description: 'bla react bla')
-        expect(subject.call).to include(job)
-      end
-
-      it 'returns jobs that include react.js' do
-        job = create(:job, description: 'bla react.js bla')
-        expect(subject.call).to include(job)
-      end
-
-      it 'returns jobs that include reactjs' do
-        job = create(:job, description: 'bla reactjs bla')
-        expect(subject.call).to include(job)
-      end
-
-      it 'does not return jobs containing reaction' do
-        create(:job, description: 'bla reaction bla')
-        expect(subject.call).to be_empty
-      end
-
-      it 'does not return jobs that only contain react-native' do
-        create(:job, description: 'bla react-native bla')
-        expect(subject.call).to be_empty
-      end
-
-      it 'does not return jobs that only contain react native' do
-        create(:job, description: 'bla react native bla')
-        expect(subject.call).to be_empty
-      end
+      it_behaves_like :matches_job_keyword, 'react'
+      it_behaves_like :matches_job_keyword, 'react.js'
+      it_behaves_like :matches_job_keyword, 'reactjs'
+      it_behaves_like :matches_job_keyword, 'react, react-native'
+      it_behaves_like :does_not_match_job_keyword, 'reaction'
+      it_behaves_like :does_not_match_job_keyword, 'react-native'
+      it_behaves_like :does_not_match_job_keyword, 'react native'
     end
   end
 end
