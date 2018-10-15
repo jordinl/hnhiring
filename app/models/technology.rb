@@ -17,6 +17,7 @@ class Technology < ActiveRecord::Base
     java:           -> { Job.matching_words(%w(java)) },
     javascript:     -> { Job.matching_words(%w(javascript)) },
     kotlin:         -> { Job.matching_words(%w(kotlin)) },
+    node:           -> { Job.matching_words(%w(node nodejs)) },
     php:            -> { Job.matching_words(%w(php)) },
     python:         -> { Job.matching_words(%w(python django)) },
     rails:          -> { Job.matching_words(%w(rails)) },
