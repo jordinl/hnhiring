@@ -25,6 +25,7 @@ class Technology < ActiveRecord::Base
     rust:           -> { Job.matching_words(%w(rust)) },
     scala:          -> { Job.matching_words(%w(scala)) },
     swift:          -> { Job.matching_words(%w(swift)) },
+    vue:            -> { Job.matching_words(%w(vue vuejs)) }
   }
 
   def self.populate!
