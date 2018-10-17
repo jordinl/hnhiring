@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_11_190526) do
+ActiveRecord::Schema.define(version: 2018_10_17_180319) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "job_technologies", force: :cascade do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_10_11_190526) do
     t.datetime "updated_at", null: false
     t.string "api_id"
     t.index ["api_id"], name: "index_jobs_on_api_id"
+    t.index ["description"], name: "index_jobs_on_description", opclass: :gin_trgm_ops, using: :gin
     t.index ["month_id"], name: "index_jobs_on_month_id"
   end
 
