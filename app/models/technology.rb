@@ -14,6 +14,7 @@ class Technology < ActiveRecord::Base
     elixir:         -> { Job.matching_words(%w(elixir)) },
     elm:            -> { Job.matching_words(%w(elm)) },
     ember:          -> { Job.matching_words(%w(ember emberjs)) },
+    go:             -> { Job.matching_words(%w(golang)).or(Job.matching_text_sensitive('\yGo\y')) },
     ios:            -> { Job.matching_words(%w(ios)) },
     java:           -> { Job.matching_words(%w(java)) },
     javascript:     -> { Job.matching_words(%w(javascript)) },
