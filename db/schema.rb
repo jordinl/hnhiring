@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_173929) do
+ActiveRecord::Schema.define(version: 2018_10_19_174711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2018_10_19_173929) do
     t.integer "jobs_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "kind"
+    t.index ["kind"], name: "index_keywords_on_kind"
     t.index ["slug"], name: "index_keywords_on_slug"
   end
 

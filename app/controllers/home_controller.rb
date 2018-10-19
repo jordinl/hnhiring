@@ -5,6 +5,6 @@ class HomeController < ApplicationController
     @jobs_count = Job.count
     @next_post_time = NextHiringPost.call
 
-    @top_technologies = Keyword.order(jobs_count: :desc)
+    @top_technologies = Keyword.technology.order(jobs_count: :desc)
   end
 end
