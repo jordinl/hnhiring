@@ -36,19 +36,19 @@ class Keyword < ActiveRecord::Base
       vue:            -> { Job.matching_words(%w(vue vuejs)) }
     },
     location: {
-      'amsterdam': -> { Job.matching_words(%w(Amsterdam)) },
-      'bangalore': -> { Job.matching_words(%w(Bangalore Bengaluru)) },
-      'berlin': -> { Job.matching_words(%w(Berlin)) },
-      'boston': -> { Job.matching_words(%w(Boston)) },
-      'dublin': -> { Job.matching_words(%w(Dublin)) },
-      'london': -> { Job.matching_words(%w(London)) },
-      'nyc': -> { Job.matching_words(['New York', 'NYC']) },
-      'paris': -> { Job.matching_words(%w(Paris)) },
-      'san-francisco': -> { Job.matching_words(['San Francisco', 'SF']) },
-      'seattle': -> { Job.matching_words(%w(Seattle)) },
-      'tokyo': -> { Job.matching_words(%w(Tokyo)) },
-      'toronto': -> { Job.matching_words(%w(Toronto)) },
-      'vancouver': -> { Job.matching_words(%w(Vancouver)) }
+      amsterdam: -> { Job.matching_words(%w(Amsterdam)) },
+      bangalore: -> { Job.matching_words(%w(Bangalore Bengaluru)) },
+      berlin:    -> { Job.matching_words(%w(Berlin)) },
+      boston:    -> { Job.matching_words(%w(Boston)) },
+      dublin:    -> { Job.matching_words(%w(Dublin)) },
+      london:    -> { Job.matching_words(%w(London)) },
+      nyc:       -> { Job.matching_words(['New York', 'NYC']) },
+      paris:     -> { Job.matching_words(%w(Paris)) },
+      sf:        -> { Job.matching_words(['San Francisco', 'SF']) },
+      seattle:   -> { Job.matching_words(%w(Seattle)) },
+      tokyo:     -> { Job.matching_words(%w(Tokyo)) },
+      toronto:   -> { Job.matching_words(%w(Toronto)) },
+      vancouver: -> { Job.matching_words(%w(Vancouver)) }
     }
   }
 
