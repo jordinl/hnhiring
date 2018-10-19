@@ -19,4 +19,13 @@ class ApplicationController < ActionController::Base
                                .split(',')
                                .map(&:squish!)
   end
+
+  def location_keywords
+    return [] if params[:locations].blank? && params[:location].blank?
+    @location_keywords ||= [params[:locations], [params[:location]]]
+                             .select(&:present?)
+                             .join(',')
+                             .split(',')
+                             .map(&:squish!)
+  end
 end

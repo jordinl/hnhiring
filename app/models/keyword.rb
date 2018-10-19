@@ -3,6 +3,7 @@ class Keyword < ActiveRecord::Base
   has_many :jobs, through: :job_keywords
 
   scope :technology, -> { where(kind: 'technology') }
+  scope :location, -> { where(kind: 'location') }
 
   FINDERS = {
     technology: {
@@ -33,6 +34,9 @@ class Keyword < ActiveRecord::Base
       scala:          -> { Job.matching_words(%w(scala)) },
       swift:          -> { Job.matching_words(%w(swift)) },
       vue:            -> { Job.matching_words(%w(vue vuejs)) }
+    },
+    location: {
+      'san-francisco': -> { Job.matching_words(['San Francisco', 'SF']) },
     }
   }
 
@@ -43,7 +47,7 @@ class Keyword < ActiveRecord::Base
         keyword = find_or_create_by!(slug: slug, kind: kind)
         jobs_scope = finder.call
         jobs_scope.where.not(id: keyword.jobs).find_each do |job|
-          job.technologies << technology
+          job.keywords << keyword
         end
         keyword.job_keywords.joins(:job).where.not(jobs: { id: jobs_scope }).destroy_all
       end
