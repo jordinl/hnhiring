@@ -1,6 +1,6 @@
 class Technology < ActiveRecord::Base
-  has_many :job_technologies, dependent: :destroy
-  has_many :jobs, through: :job_technologies
+  has_many :job_keywords, dependent: :destroy
+  has_many :jobs, through: :job_keywords
 
   DEFINITIONS = {
     android:        -> { Job.matching_words(%w(android)) },

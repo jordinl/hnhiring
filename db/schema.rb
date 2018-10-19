@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_180319) do
+ActiveRecord::Schema.define(version: 2018_10_19_173646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
-  create_table "job_technologies", force: :cascade do |t|
+  create_table "job_keywords", force: :cascade do |t|
     t.bigint "job_id"
     t.bigint "technology_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_technologies_on_job_id"
-    t.index ["technology_id"], name: "index_job_technologies_on_technology_id"
+    t.index ["job_id"], name: "index_job_keywords_on_job_id"
+    t.index ["technology_id"], name: "index_job_keywords_on_technology_id"
   end
 
   create_table "jobs", id: :serial, force: :cascade do |t|
@@ -57,6 +57,6 @@ ActiveRecord::Schema.define(version: 2018_10_17_180319) do
     t.index ["slug"], name: "index_technologies_on_slug"
   end
 
-  add_foreign_key "job_technologies", "jobs"
-  add_foreign_key "job_technologies", "technologies"
+  add_foreign_key "job_keywords", "jobs"
+  add_foreign_key "job_keywords", "technologies"
 end

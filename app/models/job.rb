@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :month, counter_cache: true, touch: true
-  has_many :job_technologies, dependent: :destroy
-  has_many :technologies, through: :job_technologies
+  has_many :job_keywords, dependent: :destroy
+  has_many :technologies, through: :job_keywords
 
   validates :month_id, :description, :published_at, :username, :api_id, presence: true
 
