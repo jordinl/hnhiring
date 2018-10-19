@@ -36,6 +36,7 @@ class Keyword < ActiveRecord::Base
       vue:            -> { Job.matching_words(%w(vue vuejs)) }
     },
     location: {
+      'amsterdam': -> { Job.matching_words(%w(Amsterdam)) },
       'berlin': -> { Job.matching_words(%w(Berlin)) },
       'dublin': -> { Job.matching_words(%w(Dublin)) },
       'london': -> { Job.matching_words(%w(London)) },
