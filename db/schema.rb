@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_173646) do
+ActiveRecord::Schema.define(version: 2018_10_19_173929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2018_10_19_173646) do
 
   create_table "job_keywords", force: :cascade do |t|
     t.bigint "job_id"
-    t.bigint "technology_id"
+    t.bigint "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_job_keywords_on_job_id"
-    t.index ["technology_id"], name: "index_job_keywords_on_technology_id"
+    t.index ["keyword_id"], name: "index_job_keywords_on_keyword_id"
   end
 
   create_table "jobs", id: :serial, force: :cascade do |t|
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2018_10_19_173646) do
     t.index ["month_id"], name: "index_jobs_on_month_id"
   end
 
+  create_table "keywords", force: :cascade do |t|
+    t.string "slug"
+    t.integer "jobs_count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_keywords_on_slug"
+  end
+
   create_table "months", id: :serial, force: :cascade do |t|
     t.integer "number"
     t.string "api_id"
@@ -49,14 +57,6 @@ ActiveRecord::Schema.define(version: 2018_10_19_173646) do
     t.index ["slug"], name: "index_months_on_slug", unique: true
   end
 
-  create_table "technologies", force: :cascade do |t|
-    t.string "slug"
-    t.integer "jobs_count", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["slug"], name: "index_technologies_on_slug"
-  end
-
   add_foreign_key "job_keywords", "jobs"
-  add_foreign_key "job_keywords", "technologies"
+  add_foreign_key "job_keywords", "keywords"
 end

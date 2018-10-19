@@ -20,7 +20,7 @@
             .col-12
               strong Technologies
           .row.mb-4
-            - Technology.order(:slug).each do |technology|
+            - Keyword.order(:slug).each do |technology|
               .col-6
                 .form-check
                   - checkbox_id = "technologies-#{technology.slug}"

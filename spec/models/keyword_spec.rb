@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Technology do
+RSpec.describe Keyword do
   describe 'finders' do
     describe 'react' do
-      subject { Technology::DEFINITIONS[:react] }
+      subject { Keyword::DEFINITIONS[:react] }
 
       it_behaves_like :matches_job_keyword, 'react'
       it_behaves_like :matches_job_keyword, 'react.js'
@@ -15,7 +15,7 @@ RSpec.describe Technology do
     end
 
     describe 'C' do
-      subject { Technology::DEFINITIONS[:c] }
+      subject { Keyword::DEFINITIONS[:c] }
 
       it_behaves_like :matches_job_keyword, 'C,'
       it_behaves_like :matches_job_keyword, 'C.'

@@ -1,4 +1,4 @@
 task :cron => :environment do
   ImportMonthService.new.call
-  Technology.populate!
+  Keyword.populate!
 end

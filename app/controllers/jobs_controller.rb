@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   end
 
   def technology
-    @technology = Technology.find_by!(slug: params[:technology])
+    @technology = Keyword.find_by!(slug: params[:technology])
     @month = Month.find_by(slug: params[:month]) || Month.order(:number).last
     find_jobs
   end
@@ -23,7 +23,7 @@ class JobsController < ApplicationController
     search_keywords.each do |keyword|
       @jobs.where!('description::varchar ILIKE ?', "%#{keyword}%")
     end
-    @jobs.joins!(:technologies).where!(technologies: { slug: technology_keywords }) if technology_keywords.present?
+    @jobs.joins!(:keywords).where!(keywords: { slug: technology_keywords }) if technology_keywords.present?
     @jobs.distinct!
     @previous_month = @month.previous_month
   end

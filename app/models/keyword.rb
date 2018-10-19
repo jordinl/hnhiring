@@ -1,4 +1,4 @@
-class Technology < ActiveRecord::Base
+class Keyword < ActiveRecord::Base
   has_many :job_keywords, dependent: :destroy
   has_many :jobs, through: :job_keywords
 
@@ -33,14 +33,14 @@ class Technology < ActiveRecord::Base
   }
 
   def self.populate!
-    Technology.where.not(slug: DEFINITIONS.keys).destroy_all
+    Keyword.where.not(slug: DEFINITIONS.keys).destroy_all
     DEFINITIONS.each do |slug, finder|
-      technology = find_or_create_by!(slug: slug)
+      keyword = find_or_create_by!(slug: slug)
       jobs_scope = finder.call
-      jobs_scope.where.not(id: technology.jobs).find_each do |job|
+      jobs_scope.where.not(id: keyword.jobs).find_each do |job|
         job.technologies << technology
       end
-      technology.job_technologies.joins(:job).where.not(jobs: { id: jobs_scope }).destroy_all
+      keyword.job_keywords.joins(:job).where.not(jobs: { id: jobs_scope }).destroy_all
     end
   end
 
