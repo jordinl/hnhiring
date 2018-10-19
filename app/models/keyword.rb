@@ -37,6 +37,7 @@ class Keyword < ActiveRecord::Base
     },
     location: {
       'amsterdam': -> { Job.matching_words(%w(Amsterdam)) },
+      'bangalore': -> { Job.matching_words(%w(Bangalore Bengaluru)) },
       'berlin': -> { Job.matching_words(%w(Berlin)) },
       'dublin': -> { Job.matching_words(%w(Dublin)) },
       'london': -> { Job.matching_words(%w(London)) },
