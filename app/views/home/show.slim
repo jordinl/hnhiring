@@ -27,4 +27,4 @@
         - @top_technologies.each_with_index do |technology, index|
           tr
             td #{index + 1}.
-            td= link_to "#{technology.jobs_count} #{technology_name(technology)} jobs", technology_path(technology)
+            td= link_to "#{technology.jobs_count} #{keyword_name(technology)} jobs", technology_path(technology)

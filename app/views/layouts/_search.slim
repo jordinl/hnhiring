@@ -26,7 +26,7 @@
                   - checkbox_id = "technologies-#{technology.slug}"
                   = check_box_tag 'technologies_checkboxes[]', technology.slug, technology_keywords.include?(technology.slug),
                           class: 'form-check-input', id: checkbox_id, 'data-checkbox-change' => '[name="technologies"]'
-                  = label_tag checkbox_id, technology_name(technology), class: 'form-check-label'
+                  = label_tag checkbox_id, keyword_name(technology), class: 'form-check-label'
       .modal-footer
         button.btn.btn-secondary data-dismiss='modal' type='button' Close
         button.btn.btn-primary data-submit='#searchForm' type='button' Search
