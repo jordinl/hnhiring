@@ -46,6 +46,7 @@ class Keyword < ActiveRecord::Base
       paris:     -> { Job.matching_words(%w(Paris)) },
       sf:        -> { Job.matching_words(['San Francisco', 'SF']) },
       seattle:   -> { Job.matching_words(%w(Seattle)) },
+      tampa:     -> { Job.matching_words(%w(Tampa)) },
       tokyo:     -> { Job.matching_words(%w(Tokyo)) },
       toronto:   -> { Job.matching_words(%w(Toronto)) },
       vancouver: -> { Job.matching_words(%w(Vancouver)) }
