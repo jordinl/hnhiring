@@ -5,7 +5,7 @@
         h5.modal-title Search Jobs
         button.close aria-label='Close' data-dismiss='modal' type='button'
           span  &times;
-      .modal-body
+      .modal-body.p-1.p-sm-3
         .container-fluid
           .row.mt-3
             .col-12
@@ -14,19 +14,31 @@
             .col-12
               form#searchForm(action=search_path autocomplete='off' data-form-get)
                 = hidden_field_tag :technologies, technology_keywords.join(',')
+                = hidden_field_tag :locations, location_keywords.join(',')
                 .input-group.mt-1
                   input.form-control type='text' name='q' value=params[:q]
           .row.mt-2
             .col-12
               strong Technologies
           .row.mb-4
-            - Keyword.order(:slug).each do |technology|
+            - technologies.sort_by(&:slug).each do |technology|
               .col-6
                 .form-check
                   - checkbox_id = "technologies-#{technology.slug}"
                   = check_box_tag 'technologies_checkboxes[]', technology.slug, technology_keywords.include?(technology.slug),
                           class: 'form-check-input', id: checkbox_id, 'data-checkbox-change' => '[name="technologies"]'
                   = label_tag checkbox_id, keyword_name(technology), class: 'form-check-label'
+          .row.mt-2
+            .col-12
+              strong Locations
+          .row.mb-4
+            - locations.sort_by(&:slug).each_with_index do |location, index|
+              .col-6.pr-0.pr-sm-3
+                .form-check
+                  - checkbox_id = "location-#{location.slug}"
+                  = check_box_tag 'locations_checkboxes[]', location.slug, location_keywords.include?(location.slug),
+                          class: 'form-check-input', id: checkbox_id, 'data-checkbox-change' => '[name="locations"]'
+                  = label_tag checkbox_id, keyword_name(location), class: 'form-check-label'
       .modal-footer
         button.btn.btn-secondary data-dismiss='modal' type='button' Close
         button.btn.btn-primary data-submit='#searchForm' type='button' Search
