@@ -109,6 +109,8 @@ class Keyword < ActiveRecord::Base
       pune:            -> { Job.matching_words(%w(Pune)) },
       raleigh:         -> { Job.matching_words(%w(Raleigh)) },
       'redwood-city':  -> { Job.matching_words(['Redwood City']) },
+      remote:          -> { Job.matching_words(%w(Remote)).merge(Job.not_matching_words(['No Remote']))
+                              .merge(Job.matching_text('remote(?<!<\/p>.*)')) },
       'san-diego':     -> { Job.matching_words(['San Diego']) },
       'san-mateo':     -> { Job.matching_words(['San Mateo']) },
       'san-jose':      -> { Job.matching_words(['San Jose']) },
