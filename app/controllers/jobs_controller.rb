@@ -25,8 +25,8 @@ class JobsController < ApplicationController
     search_keywords.each do |keyword|
       @jobs.where!('description::varchar ILIKE ?', "%#{keyword}%")
     end
-    @jobs.joins!(:keywords).merge!(Keyword.technology.where(slug: technology_keywords)) if technology_keywords.present?
-    @jobs.joins!(:keywords).merge!(Keyword.location.where(slug: location_keywords)) if location_keywords.present?
+    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.technology.where(slug: technology_keywords))) if technology_keywords.present?
+    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.location.where(slug: location_keywords))) if location_keywords.present?
     @jobs.distinct!
     @previous_month = @month.previous_month
   end
