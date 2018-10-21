@@ -173,3 +173,18 @@ hr.section-divider {
     margin-left: 5px;
   }
 }
+
+.modal .close {
+  font-size: 1.5em;
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    margin: 0;
+  }
+
+  .modal-dialog  .modal-content {
+    border: 0;
+    border-radius: 0;
+  }
+}
