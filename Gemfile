@@ -8,6 +8,7 @@ gem 'nokogiri'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 5.2.0'
+gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks'
 
@@ -17,6 +18,7 @@ group :assets do
 end
 
 group :development do
+  gem 'dotenv-rails'
   gem 'listen'
   gem 'pry'
 end

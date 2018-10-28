@@ -188,3 +188,12 @@ hr.section-divider {
     border-radius: 0;
   }
 }
+
+.required abbr {
+  text-decoration: none;
+  cursor: default;
+}
+
+textarea {
+  min-height: 150px;
+}

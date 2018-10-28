@@ -23,5 +23,9 @@ html
           a(href='http://jordinl.com') Jordi Noguera
         = link_to '#', class: 'right search-icon', 'data-target' => '#searchModal', 'data-toggle' => 'modal' do
           i.fas.fa-search
+
+    - %i(notice success warning error).each do |kind|
+      - if flash[kind].present?
+        .container.alert.mt-4.mb-0.center(class="alert-#{kind}" data-alert)= flash[kind]
     = yield
     = render 'layouts/search'

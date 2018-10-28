@@ -16,3 +16,4 @@
 /tmp
 /.idea
 spec/examples.txt
+.env
