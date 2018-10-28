@@ -5,5 +5,13 @@ class SitemapsController < ApplicationController
     @months = Month.joins(:jobs)
                 .select(:id, :slug, 'max(jobs.published_at) as published_at')
                 .group(:id)
+
+    @locations = Keyword.location.joins(:job_keywords)
+                   .select(:id, :slug, 'max(job_keywords.created_at) as updated_at')
+                   .group(:id)
+
+    @technologies = Keyword.technology.joins(:job_keywords)
+                      .select(:id, :slug, 'max(job_keywords.created_at) as updated_at')
+                      .group(:id)
   end
 end

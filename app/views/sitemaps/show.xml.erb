@@ -10,4 +10,16 @@
       <lastmod><%= month.published_at.iso8601 %></lastmod>
     </url>
   <% end %>
+  <%- @locations.find_each do |location| %>
+    <url>
+      <loc><%= location_url(location) %></loc>
+      <lastmod><%= location.updated_at.iso8601 %></lastmod>
+    </url>
+  <% end %>
+  <%- @technologies.find_each do |technology| %>
+    <url>
+      <loc><%= technology_url(technology) %></loc>
+      <lastmod><%= technology.updated_at.iso8601 %></lastmod>
+    </url>
+  <% end %>
 </urlset>
