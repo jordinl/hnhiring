@@ -96,11 +96,12 @@ nav .title a:hover {
   text-decoration: underline;
 }
 
-nav .search-icon {
-  font-size: 1.1em;
-  line-height: 1.1em;
+nav i {
+  font-size: 1.2rem;
+  line-height: 1.2rem !important;
   color: white !important;
-  padding: 0.4em 0 0.3rem;
+  padding: 0.4rem 0 0;
+  vertical-align: middle;
 }
 
 .left {

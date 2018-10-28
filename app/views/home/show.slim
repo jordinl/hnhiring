@@ -9,9 +9,9 @@
 
   p.mb-1 The latest post is:
   .month
-    h2= link_to @last_month, @last_month
-    .published-at.mb-1 Updated on #{@last_month.published_at.to_date.to_s(:long)}
-    .gray #{@last_month.jobs_count} jobs found
+    h2= link_to last_month, last_month
+    .published-at.mb-1 Updated on #{last_month.published_at.to_date.to_s(:long)}
+    .gray #{last_month.jobs_count} jobs found
 
   hr.section-divider
   .month

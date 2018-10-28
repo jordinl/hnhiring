@@ -17,7 +17,9 @@ html
   body(class= "#{controller_name}-page")
     nav.navbar.navbar-default.navbar-fixed-top
       .navbar-header
-        h2.title.left
+        = link_to '#', class: 'left menu-icon', 'data-target' => '#menuModal', 'data-toggle' => 'modal' do
+          i.fas.fa-bars
+        h2.title.left.ml-3
           = link_to 'HNHIRING', '/'
           span.green<> - by -
           a(href='http://jordinl.com') Jordi Noguera
@@ -29,3 +31,4 @@ html
         .container.alert.mt-4.mb-0.center(class="alert-#{kind}" data-alert)= flash[kind]
     = yield
     = render 'layouts/search'
+    = render 'layouts/menu'
