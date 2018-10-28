@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default to: 'jordinoguera83@gmail.com'
+  default to: 'jordi@hnhiring.com'
   layout false
 
   def contact(form)
