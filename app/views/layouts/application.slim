@@ -13,6 +13,7 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = render partial: 'layouts/analytics'
+    = render partial: 'layouts/structured_data'
 
   body(class= "#{controller_name}-page")
     nav.navbar.navbar-default.navbar-fixed-top
