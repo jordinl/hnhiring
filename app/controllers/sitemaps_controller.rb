@@ -3,7 +3,7 @@ class SitemapsController < ApplicationController
 
   def show
     @months = Month.joins(:jobs)
-                .select(:id, :slug, 'max(jobs.published_at) as published_at')
+                .select(:id, :slug, 'max(jobs.published_at) as max_published_at')
                 .group(:id)
 
     @locations = Keyword.location.joins(:job_keywords)
