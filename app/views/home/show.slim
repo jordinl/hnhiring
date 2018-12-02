@@ -16,7 +16,7 @@
   hr.section-divider
   .month
     p.mb-1 Next Hiring post will go live on:
-    h3(data-format-datetime=@next_post_time)= @next_post_time.strftime('%a, %-d %b %Y at %-H:%M %Z')
+    h3(data-format-datetime=(@next_post_time.to_i * 1000))= @next_post_time.strftime('%a, %-d %b %Y at %-H:%M %Z')
 
 .odd
   .container.pb-5.pt-5(data-show-by-score=15)
