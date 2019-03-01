@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get '/:kind/:keyword/months/:month', to: 'jobs#keyword', as: :keyword_month
   resource :sitemap, only: :show
   resource :robots, only: :show
-  resource :contact, only: %i(show create)
+  resource :contact, only: %i(show)
 end
