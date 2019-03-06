@@ -1,6 +1,4 @@
 - content_for(:title, 'Job Trends')
-- content_for(:head) do
-  script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js')
 
 .container
   h1.center.page-title Job Trends
@@ -17,40 +15,36 @@
           selected_locations: trends_locations
 
 javascript:
-  $(document).on('turbolinks:load', function () {
-    if (!document.getElementById('chart')) {
-      return
-    }
-    var months = #{{@months.map { |m| { id: m.id, name: m.short_name } }.to_json}}
-    var technologies = #{{@technologies.map { |t| { id: t.id, name: keyword_name(t) } }.to_json}}
-    var counts = #{{@counts.map { |k| { technology_id: k.id, month_id: k.month_id, jobs_count: k.count } }.to_json}}
+  var months = #{{@months.map { |m| { id: m.id, name: m.short_name } }.to_json}}
+  var technologies = #{{@technologies.map { |t| { id: t.id, name: keyword_name(t) } }.to_json}}
+  var counts = #{{@counts.map { |k| { technology_id: k.id, month_id: k.month_id, jobs_count: k.count } }.to_json}}
 
-    google.charts.load('current', {'packages': ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+  google.charts.load('current', {'packages': ['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart () {
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Month')
+  function drawChart () {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Month')
 
-      technologies.forEach(function(technology) {
-        data.addColumn('number', technology.name)
-      })
+    technologies.forEach(function(technology) {
+      data.addColumn('number', technology.name)
+    })
 
-      months.forEach(function(month) {
-        var row = [month.name]
+    months.forEach(function(month) {
+      var row = [month.name]
 
-        technologies.forEach(function (technology) {
-          var count = counts.find(function (t) {
-            return t.technology_id === technology.id && t.month_id === month.id
-          })
-          row.push(count ? count.jobs_count : 0)
+      technologies.forEach(function (technology) {
+        var count = counts.find(function (t) {
+          return t.technology_id === technology.id && t.month_id === month.id
         })
-
-        data.addRow(row)
+        row.push(count ? count.jobs_count : 0)
       })
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart'));
-      chart.draw(data, { width: '100%', vAxis: { baseline: 0, format: '#' }, chartArea: { height: '90%' } });
-    }
-  })
+      data.addRow(row)
+    })
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart'));
+    chart.draw(data, { width: '100%', vAxis: { baseline: 0, format: '#' }, chartArea: { height: '90%' } });
+  }
+
 
