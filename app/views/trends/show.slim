@@ -1,10 +1,10 @@
 - content_for(:title, 'Job Trends')
 
-.container
+.container-fluid
   h1.center.page-title Job Trends
-  #chart style="height: 500px"
+  #chart.chart style="height: 500px"
 
-  .center.mt-4
+  .center.mt-4.mb-5
     = link_to 'Choose Technologies and Locations', '#','data-target' => '#filterTrends', 'data-toggle' => 'modal'
   = render 'layouts/search',
           modal_id: 'filterTrends',
@@ -44,7 +44,25 @@ javascript:
     })
 
     var chart = new google.visualization.LineChart(document.getElementById('chart'));
-    chart.draw(data, { width: '100%', vAxis: { baseline: 0, format: '#' }, chartArea: { height: '90%' } });
+    var options = { width: '100%',
+      legend: { position: 'bottom' },
+      vAxis: { baseline: 0, format: '#' },
+      hAxis: { slantedText: true },
+      chartArea: { height: '80%', width: '90%' } }
+
+    if (window.innerWidth > 959) {
+      options.legend = 'right'
+      options.chartArea = { height: '85%', top: 20 }
+    } else {
+      options.legend = 'bottom'
+      options.chartArea = { width: '85%', height: '78%' }
+    }
+
+    chart.draw(data, options);
   }
+
+  $(window).resize(function () {
+    drawChart();
+  });
 
 
