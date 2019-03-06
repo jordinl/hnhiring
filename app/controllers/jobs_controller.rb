@@ -25,24 +25,24 @@ class JobsController < ApplicationController
     search_keywords.each do |keyword|
       @jobs.where!('description::varchar ILIKE ?', "%#{keyword}%")
     end
-    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.technology.where(slug: technology_keywords))) if technology_keywords.present?
-    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.location.where(slug: location_keywords))) if location_keywords.present?
+    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.technology.where(slug: search_technologies))) if search_technologies.present?
+    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.location.where(slug: search_locations))) if search_locations.present?
     @jobs.distinct!
     @previous_month = @month.previous_month
   end
 
-  def technology_keywords
+  def search_technologies
     return [] if params[:technologies].blank? && params[:technology].blank?
-    @technology_keywords ||= [params[:technologies], [params[:technology]]]
+    @search_technologies ||= [params[:technologies], [params[:technology]]]
                                .select(&:present?)
                                .join(',')
                                .split(',')
                                .map(&:squish!)
   end
 
-  def location_keywords
+  def search_locations
     return [] if params[:locations].blank? && params[:location].blank?
-    @location_keywords ||= [params[:locations], [params[:location]]]
+    @search_locations ||= [params[:locations], [params[:location]]]
                              .select(&:present?)
                              .join(',')
                              .split(',')

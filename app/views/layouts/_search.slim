@@ -10,8 +10,8 @@
           .row.mb-3
             .col-12
               form(action=form_url autocomplete='off' data-form-get)
-                = hidden_field_tag :technologies, technology_keywords.join(',')
-                = hidden_field_tag :locations, location_keywords.join(',')
+                = hidden_field_tag :technologies, selected_technologies.join(',')
+                = hidden_field_tag :locations, selected_locations.join(',')
                 - if show_keywords
                   .mt-3.mb-3
                     strong Keywords (comma separated)
