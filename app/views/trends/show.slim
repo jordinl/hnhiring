@@ -1,7 +1,13 @@
 - content_for(:title, 'Trends')
 - content_for(:head) do
-  script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js' data-turbolinks-track='reload')
-  javascript:
+  script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js')
+
+.container
+  h1.center.page-title Trends
+  #chart style="height: 500px"
+
+javascript:
+  $(document).on('turbolinks:load', function () {
     var months = #{{@months.map { |m| { id: m.id, name: m.short_name } }.to_json}}
     var technologies = #{{@technologies.map { |t| { id: t.id, name: keyword_name(t) } }.to_json}}
     var counts = #{{@counts.map { |k| { technology_id: k.id, month_id: k.month_id, jobs_count: k.count } }.to_json}}
@@ -31,9 +37,7 @@
       })
 
       var chart = new google.visualization.LineChart(document.getElementById('chart'));
-      chart.draw(data, { vAxis: { baseline: 0, format: '#' }, chartArea: { height: '90%' } });
+      chart.draw(data, { width: '100%', vAxis: { baseline: 0, format: '#' }, chartArea: { height: '90%' } });
     }
+  })
 
-.container
-  h1.center.page-title Trends
-  #chart style="height: 500px"
