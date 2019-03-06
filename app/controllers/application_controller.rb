@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :technology_keywords, :location_keywords, :technologies, :locations, :last_month
+  helper_method :technology_keywords, :location_keywords, :all_technologies, :all_locations, :last_month
 
   private
 
@@ -12,29 +12,19 @@ class ApplicationController < ActionController::Base
   end
 
   def technology_keywords
-    return [] if params[:technologies].blank? && params[:technology].blank?
-    @technology_keywords ||= [params[:technologies], [params[:technology]]]
-                               .select(&:present?)
-                               .join(',')
-                               .split(',')
-                               .map(&:squish!)
+    []
   end
 
   def location_keywords
-    return [] if params[:locations].blank? && params[:location].blank?
-    @location_keywords ||= [params[:locations], [params[:location]]]
-                             .select(&:present?)
-                             .join(',')
-                             .split(',')
-                             .map(&:squish!)
+    []
   end
 
-  def technologies
-    @technologies ||= Keyword.technology.all
+  def all_technologies
+    @all_technologies ||= Keyword.technology.all
   end
 
-  def locations
-    @locations ||= Keyword.location.all
+  def all_locations
+    @all_locations ||= Keyword.location.all
   end
 
   def last_month

@@ -30,4 +30,22 @@ class JobsController < ApplicationController
     @jobs.distinct!
     @previous_month = @month.previous_month
   end
+
+  def technology_keywords
+    return [] if params[:technologies].blank? && params[:technology].blank?
+    @technology_keywords ||= [params[:technologies], [params[:technology]]]
+                               .select(&:present?)
+                               .join(',')
+                               .split(',')
+                               .map(&:squish!)
+  end
+
+  def location_keywords
+    return [] if params[:locations].blank? && params[:location].blank?
+    @location_keywords ||= [params[:locations], [params[:location]]]
+                             .select(&:present?)
+                             .join(',')
+                             .split(',')
+                             .map(&:squish!)
+  end
 end
