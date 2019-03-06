@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resource :sitemap, only: :show
   resource :robots, only: :show
   resource :contact, only: %i(show)
+  resource :trends, only: %i(show)
 end
