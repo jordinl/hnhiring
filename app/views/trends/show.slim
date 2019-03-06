@@ -1,6 +1,6 @@
 - content_for(:title, 'Trends')
 - content_for(:head) do
-  script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js')
+  script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js' data-turbolinks-track='reload')
   javascript:
     var months = #{{@months.map { |m| { id: m.id, name: m.short_name } }.to_json}}
     var technologies = #{{@technologies.map { |t| { id: t.id, name: keyword_name(t) } }.to_json}}
