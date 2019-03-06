@@ -7,17 +7,16 @@
           span  &times;
       .modal-body.p-1.p-sm-2
         .container-fluid
-          - if show_keywords
-            .row.mt-3
-              .col-12
-                strong Keywords (comma separated)
           .row.mb-3
             .col-12
               form(action=form_url autocomplete='off' data-form-get)
                 = hidden_field_tag :technologies, technology_keywords.join(',')
                 = hidden_field_tag :locations, location_keywords.join(',')
-                .input-group.mt-1
-                  input.form-control type='text' name='q' value=params[:q]
+                - if show_keywords
+                  .mt-3.mb-3
+                    strong Keywords (comma separated)
+                    .input-group.mt-1
+                      input.form-control type='text' name='q' value=params[:q]
           .row.mt-2
             .col-12
               strong Technologies
@@ -26,7 +25,7 @@
               .col-6.pr-1.pr-sm-3(data-score=technology.jobs_count)
                 .form-check
                   - checkbox_id = "#{modal_id}-technologies-#{technology.slug}"
-                  = check_box_tag 'technologies_checkboxes[]', technology.slug, technology_keywords.include?(technology.slug),
+                  = check_box_tag 'technologies_checkboxes[]', technology.slug, selected_technologies.include?(technology.slug),
                           class: 'form-check-input', id: checkbox_id, 'data-checkbox-change' => '[name="technologies"]'
                   = label_tag checkbox_id, keyword_name(technology), class: 'form-check-label'
           .row.mt-2
@@ -37,7 +36,7 @@
               .col-6.pr-1.pr-sm-3(data-score=location.jobs_count)
                 .form-check
                   - checkbox_id = "#{modal_id}-location-#{location.slug}"
-                  = check_box_tag 'locations_checkboxes[]', location.slug, location_keywords.include?(location.slug),
+                  = check_box_tag 'locations_checkboxes[]', location.slug, selected_locations.include?(location.slug),
                           class: 'form-check-input', id: checkbox_id, 'data-checkbox-change' => '[name="locations"]'
                   = label_tag checkbox_id, keyword_name(location), class: 'form-check-label'
       .modal-footer

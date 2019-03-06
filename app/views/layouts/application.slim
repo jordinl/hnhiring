@@ -32,5 +32,11 @@ html
       - if flash[kind].present?
         .container.alert.mt-4.mb-0.center(class="alert-#{kind}" data-alert)= flash[kind]
     = yield
-    = render 'layouts/search', modal_id: 'searchModal', form_url: search_path, show_keywords: true, title: 'Search Jobs'
+    = render 'layouts/search',
+            modal_id: 'searchModal',
+            form_url: search_path,
+            show_keywords: true,
+            title: 'Search Jobs',
+            selected_technologies: technology_keywords,
+            selected_locations: location_keywords
     = render 'layouts/menu'

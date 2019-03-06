@@ -1,13 +1,26 @@
-- content_for(:title, 'Trends')
+- content_for(:title, 'Job Trends')
 - content_for(:head) do
   script(type='text/javascript' src='https://www.gstatic.com/charts/loader.js')
 
 .container
-  h1.center.page-title Trends
+  h1.center.page-title Job Trends
   #chart style="height: 500px"
+
+  .center.mt-4
+    = link_to 'Choose Technologies and Locations', '#','data-target' => '#filterTrends', 'data-toggle' => 'modal'
+  = render 'layouts/search',
+          modal_id: 'filterTrends',
+          form_url: trends_path,
+          title: 'Choose Technologies and Locations',
+          show_keywords: false,
+          selected_technologies: trends_technologies,
+          selected_locations: trends_locations
 
 javascript:
   $(document).on('turbolinks:load', function () {
+    if (!document.getElementById('chart')) {
+      return
+    }
     var months = #{{@months.map { |m| { id: m.id, name: m.short_name } }.to_json}}
     var technologies = #{{@technologies.map { |t| { id: t.id, name: keyword_name(t) } }.to_json}}
     var counts = #{{@counts.map { |k| { technology_id: k.id, month_id: k.month_id, jobs_count: k.count } }.to_json}}
