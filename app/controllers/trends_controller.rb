@@ -3,7 +3,7 @@ class TrendsController < ApplicationController
 
   def show
     @technologies = Keyword.technology.order(jobs_count: :desc)
-    @technologies.limit!(5) if trends_technologies.empty?
+    @technologies.limit!(10) if trends_technologies.empty?
     @technologies.where!(slug: trends_technologies) if trends_technologies.any?
     @locations = Keyword.location.where(slug: trends_locations) if trends_locations.any?
     @months    = Month.order(number: :asc)
