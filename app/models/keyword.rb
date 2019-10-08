@@ -37,7 +37,7 @@ class Keyword < ActiveRecord::Base
       swift:          -> { Job.matching_words(%w(swift)) },
       vue:            -> { Job.matching_words(%w(vue vuejs)) }
     },
-    location: {
+    location:   {
       amsterdam:       -> { Job.matching_words(%w(Amsterdam)) },
       'ann-arbor':     -> { Job.matching_words(['Ann Arbor']) },
       atlanta:         -> { Job.matching_words(%w(Atlanta)) },
@@ -49,6 +49,7 @@ class Keyword < ActiveRecord::Base
       beijing:         -> { Job.matching_words(%w(Beijing)) },
       berkeley:        -> { Job.matching_words(%w(Berkeley)) },
       berlin:          -> { Job.matching_words(%w(Berlin)) },
+      bogota:          -> { Job.matching_words(%w(Bogotá)) },
       boston:          -> { Job.matching_words(%w(Boston)) },
       boulder:         -> { Job.matching_words(%w(Boulder)) },
       braga:           -> { Job.matching_words(%w(Braga)) },
@@ -80,6 +81,7 @@ class Keyword < ActiveRecord::Base
       hyderabad:       -> { Job.matching_words(%w(Hyderabad)) },
       irvine:          -> { Job.matching_words(%w(Irvine)) },
       lausanne:        -> { Job.matching_words(%w(Lausanne)) },
+      knoxville:       -> { Job.matching_words(%w(Knoxville)) },
       lincoln:         -> { Job.matching_words(%w(Lincoln)) },
       lisbon:          -> { Job.matching_words(%w(Lisbon)) },
       la:              -> { Job.matching_text_sensitive('\yLA\y').merge(Job.not_matching_words(['New Orleans, LA']))
@@ -135,7 +137,7 @@ class Keyword < ActiveRecord::Base
       wellington:      -> { Job.matching_words(%w(Wellington)) },
       zurich:          -> { Job.matching_words(%w(Zurich)) }
     }
-  }
+  }.freeze
 
   def self.populate!
     FINDERS.each do |kind, finders|
