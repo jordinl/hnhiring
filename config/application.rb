@@ -14,16 +14,6 @@ module Hnhiring
     config.load_defaults 5.1
     config.time_zone = 'Eastern Time (US & Canada)'
 
-    ActionMailer::Base.smtp_settings = {
-      :user_name => ENV.fetch('MAILJET_USER'),
-      :password => ENV.fetch('MAILJET_PASSWORD'),
-      :domain => 'localhost',
-      :address => 'in-v3.mailjet.com',
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
