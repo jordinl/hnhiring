@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_10_19_174711) do
     t.index ["keyword_id"], name: "index_job_keywords_on_keyword_id"
   end
 
-  create_table "jobs", id: :serial, force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.text "description"
     t.datetime "published_at"
     t.string "username"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_10_19_174711) do
     t.index ["slug"], name: "index_keywords_on_slug"
   end
 
-  create_table "months", id: :serial, force: :cascade do |t|
+  create_table "months", force: :cascade do |t|
     t.integer "number"
     t.string "api_id"
     t.datetime "created_at"
