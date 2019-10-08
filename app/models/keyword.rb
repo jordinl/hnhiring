@@ -23,6 +23,7 @@ class Keyword < ActiveRecord::Base
       java:           -> { Job.matching_words(%w(java)) },
       javascript:     -> { Job.matching_words(%w(javascript)) },
       kotlin:         -> { Job.matching_words(%w(kotlin)) },
+      kubernetes:     -> { Job.matching_words(%w(kubernetes k8s)) },
       node:           -> { Job.matching_words(%w(node nodejs)) },
       perl:           -> { Job.matching_words(%w(perl)) },
       php:            -> { Job.matching_words(%w(php)) },
