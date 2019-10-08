@@ -81,6 +81,7 @@ class Keyword < ActiveRecord::Base
       hyderabad:       -> { Job.matching_words(%w(Hyderabad)) },
       irvine:          -> { Job.matching_words(%w(Irvine)) },
       lausanne:        -> { Job.matching_words(%w(Lausanne)) },
+      'kansas-city':   -> { Job.matching_words(['Kansas City']) },
       knoxville:       -> { Job.matching_words(%w(Knoxville)) },
       lincoln:         -> { Job.matching_words(%w(Lincoln)) },
       lisbon:          -> { Job.matching_words(%w(Lisbon)) },
