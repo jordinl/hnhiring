@@ -74,6 +74,7 @@ class Keyword < ActiveRecord::Base
       durham:          -> { Job.matching_words(%w(Durham)) },
       edinburgh:       -> { Job.matching_words(%w(Edinburgh)) },
       eindhoven:       -> { Job.matching_words(%w(Eindhoven)) },
+      emeryville:      -> { Job.matching_words(%w(Emeryville)) },
       geneve:          -> { Job.matching_words(%w(Geneve)) },
       guadalajara:     -> { Job.matching_words(%w(Guadalajara)) },
       'hong-kong':     -> { Job.matching_words(['Hong Kong']) },
@@ -116,6 +117,7 @@ class Keyword < ActiveRecord::Base
       'redwood-city':  -> { Job.matching_words(['Redwood City']) },
       remote:          -> { Job.matching_words(%w(Remote)).merge(Job.not_matching_words(['No Remote']))
                               .merge(Job.matching_text('remote(?<!<\/p>.*)')) },
+      'salt-lake-city':-> { Job.matching_words(['Salt Lake City']) },
       'san-diego':     -> { Job.matching_words(['San Diego']) },
       'san-mateo':     -> { Job.matching_words(['San Mateo']) },
       'san-jose':      -> { Job.matching_words(['San Jose']) },
