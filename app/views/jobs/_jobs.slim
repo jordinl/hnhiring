@@ -1,10 +1,4 @@
 .container
-  - if search_locations.include?('remote')
-    .alert.alert-primary.mt-4.mb-0.center
-      .col-12
-        | Hello visitor! I would love to hear how your experience finding remote
-        |  work is going or what you think would help you land your next remote job. If you have a
-        |  minute, please #{link_to('send me', contact_path, class: 'alert-link')} your thoughts.
   h1.center.page-title= title
   .center.page-subtitle #{@jobs.length} jobs found
   - if @jobs.length > 100
