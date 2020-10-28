@@ -5,7 +5,10 @@ html {
 }
 
 body {
+  height: 100%;
   font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 769px) {
@@ -207,6 +210,8 @@ textarea {
   padding: 30px;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
+  flex: 1;
 }
 
 .footer div {
