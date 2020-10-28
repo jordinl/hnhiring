@@ -202,3 +202,19 @@ hr.section-divider {
 textarea {
   min-height: 150px;
 }
+
+.footer {
+  padding: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer div {
+  width: 200px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.footer a {
+  color: white;
+}
