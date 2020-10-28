@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resource :robots, only: :show
   resource :contact, only: %i(show)
   resource :trends, only: %i(show)
+  resources :faqs, only: %i(index)
 end
