@@ -2,7 +2,7 @@ class ImportMonthService
   include ActionView::Helpers::SanitizeHelper
 
   def call
-    post = HackerNewsClient.fetch_latest
+    post = HackerNewsClient.fetch_latest_hiring_post
     post_date = Date.parse(post.fetch(:created_at))
     number = post_date.year * 100 + post_date.month
     @month ||= Month.find_or_create_by!(number: number, api_id: post.fetch(:id))
