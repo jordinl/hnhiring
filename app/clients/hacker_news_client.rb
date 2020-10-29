@@ -15,7 +15,7 @@ module HackerNewsClient
   private
 
   def self.get_latest_hiring_post
-    get("search_by_date?tags=story,author_whoishiring").dig("hits", 0)
+    get("search_by_date?tags=story,author_whoishiring&restrictSearchableAttributes=title&query=hiring").dig("hits", 0)
   end
 
   def self.get_comments(post_id)
