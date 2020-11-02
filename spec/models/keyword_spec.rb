@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Keyword do
   describe 'finders' do
     describe 'react' do
-      subject { Keyword::DEFINITIONS[:react] }
+      subject { Keyword::FINDERS.dig(:technology, :react) }
 
       it_behaves_like :matches_job_keyword, 'react'
       it_behaves_like :matches_job_keyword, 'react.js'
@@ -15,7 +15,7 @@ RSpec.describe Keyword do
     end
 
     describe 'C' do
-      subject { Keyword::DEFINITIONS[:c] }
+      subject { Keyword::FINDERS.dig(:technology, :c) }
 
       it_behaves_like :matches_job_keyword, 'C,'
       it_behaves_like :matches_job_keyword, 'C.'
