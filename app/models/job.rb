@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
   belongs_to :post, counter_cache: true, touch: true
-  has_many :job_keywords, dependent: :destroy
-  has_many :keywords, through: :job_keywords
+  has_many :comment_keywords, dependent: :destroy
+  has_many :keywords, through: :comment_keywords
 
   validates :post_id, :description, :published_at, :username, :api_id, presence: true
 

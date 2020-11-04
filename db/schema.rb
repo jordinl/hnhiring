@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_140949) do
+ActiveRecord::Schema.define(version: 2020_11_04_154803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
-  create_table "job_keywords", force: :cascade do |t|
+  create_table "comment_keywords", force: :cascade do |t|
     t.bigint "job_id"
     t.bigint "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_keywords_on_job_id"
-    t.index ["keyword_id"], name: "index_job_keywords_on_keyword_id"
+    t.index ["job_id"], name: "index_comment_keywords_on_job_id"
+    t.index ["keyword_id"], name: "index_comment_keywords_on_keyword_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -59,6 +59,6 @@ ActiveRecord::Schema.define(version: 2020_11_04_140949) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
-  add_foreign_key "job_keywords", "jobs"
-  add_foreign_key "job_keywords", "keywords"
+  add_foreign_key "comment_keywords", "jobs"
+  add_foreign_key "comment_keywords", "keywords"
 end

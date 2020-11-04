@@ -1,6 +1,6 @@
 class Keyword < ActiveRecord::Base
-  has_many :job_keywords, dependent: :destroy
-  has_many :jobs, through: :job_keywords
+  has_many :comment_keywords, dependent: :destroy
+  has_many :jobs, through: :comment_keywords
 
   scope :technology, -> { where(kind: 'technology') }
   scope :location, -> { where(kind: 'location') }
@@ -153,7 +153,7 @@ class Keyword < ActiveRecord::Base
         jobs_scope.where.not(id: keyword.jobs).find_each do |job|
           job.keywords << keyword
         end
-        keyword.job_keywords.joins(:job).where.not(jobs: { id: jobs_scope }).destroy_all
+        keyword.comment_keywords.joins(:job).where.not(jobs: { id: jobs_scope }).destroy_all
       end
     end
   end
