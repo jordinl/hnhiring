@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :search_technologies, :search_locations, :all_technologies, :all_locations, :last_post
 
+  before_action :set_raven_context
+
   private
 
   def search_keywords
@@ -29,5 +31,9 @@ class ApplicationController < ActionController::Base
 
   def last_post
     @last_post ||= Post.order(:number).last
+  end
+
+  def set_raven_context
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 end
