@@ -1,4 +1,4 @@
-class Month < ActiveRecord::Base
+class Post < ActiveRecord::Base
   validates :number, :api_id, presence: true
   validates :number, uniqueness: true
 
@@ -23,8 +23,8 @@ class Month < ActiveRecord::Base
     Date.new(year, month).strftime("%b %y")
   end
 
-  def previous_month
-    Month.order(number: :desc).where('number < ?', number).first
+  def previous_post
+    self.class.order(number: :desc).where('number < ?', number).first
   end
 
   def month

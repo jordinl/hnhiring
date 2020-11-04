@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc><%= root_url %></loc>
-    <lastmod><%= @months.map(&:max_published_at).max.iso8601 %></lastmod>
+    <lastmod><%= @posts.map(&:max_published_at).max.iso8601 %></lastmod>
   </url>
-  <%- @months.find_each do |month| %>
+  <%- @posts.find_each do |post| %>
     <url>
-      <loc><%= month_url(month) %></loc>
-      <lastmod><%= month.max_published_at.iso8601 %></lastmod>
+      <loc><%= post_url(post) %></loc>
+      <lastmod><%= post.max_published_at.iso8601 %></lastmod>
     </url>
   <% end %>
   <%- @locations.find_each do |location| %>

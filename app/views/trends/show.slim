@@ -15,9 +15,9 @@
           selected_locations: trends_locations
 
 javascript:
-  var months = #{{@months.map { |m| { id: m.id, name: m.short_name } }.to_json}}
+  var posts = #{{@posts.map { |m| { id: m.id, name: m.short_name } }.to_json}}
   var technologies = #{{@technologies.map { |t| { id: t.id, name: keyword_name(t) } }.to_json}}
-  var counts = #{{@counts.map { |k| { technology_id: k.id, month_id: k.month_id, jobs_count: k.count } }.to_json}}
+  var counts = #{{@counts.map { |k| { technology_id: k.id, post_id: k.post_id, jobs_count: k.count } }.to_json}}
 
   google.charts.load('current', {'packages': ['corechart']});
   google.charts.setOnLoadCallback(drawChart);
@@ -30,12 +30,12 @@ javascript:
       data.addColumn('number', technology.name)
     })
 
-    months.forEach(function(month) {
-      var row = [month.name]
+    posts.forEach(function(post) {
+      var row = [post.name]
 
       technologies.forEach(function (technology) {
         var count = counts.find(function (t) {
-          return t.technology_id === technology.id && t.month_id === month.id
+          return t.technology_id === technology.id && t.post_id === post.id
         })
         row.push(count ? count.jobs_count : 0)
       })

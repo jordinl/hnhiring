@@ -3,15 +3,15 @@
 .container.pb-5.pt-3.center
   h1.page-title.mb-4 HNHIRING
   p HNHIRING is an index of jobs from Hacker News' <em>Who is Hiring?</em> posts.
-  p It contains #{@jobs_count} job ads dating back to #{@first_month}.
+  p It contains #{@jobs_count} job ads dating back to #{@first_post}.
 
   hr.section-divider
 
   p.mb-1 The latest post is:
   .month
-    h2= link_to last_month, last_month
-    .published-at.mb-1 Updated on #{last_month.published_at.to_date.to_s(:long)}
-    .gray #{last_month.jobs_count} jobs found
+    h2= link_to last_post, last_post
+    .published-at.mb-1 Updated on #{last_post.published_at.to_date.to_s(:long)}
+    .gray #{last_post.jobs_count} jobs found
 
   hr.section-divider
   .month

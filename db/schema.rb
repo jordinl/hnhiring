@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_174711) do
+ActiveRecord::Schema.define(version: 2020_11_04_140949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2018_10_19_174711) do
     t.text "description"
     t.datetime "published_at"
     t.string "username"
-    t.integer "month_id"
+    t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_id"
     t.index ["api_id"], name: "index_jobs_on_api_id"
     t.index ["description"], name: "index_jobs_on_description", opclass: :gin_trgm_ops, using: :gin
-    t.index ["month_id"], name: "index_jobs_on_month_id"
+    t.index ["post_id"], name: "index_jobs_on_post_id"
   end
 
   create_table "keywords", force: :cascade do |t|
@@ -48,15 +48,15 @@ ActiveRecord::Schema.define(version: 2018_10_19_174711) do
     t.index ["slug"], name: "index_keywords_on_slug"
   end
 
-  create_table "months", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.integer "number"
     t.string "api_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "jobs_count", default: 0
     t.string "slug"
-    t.index ["number"], name: "index_months_on_number"
-    t.index ["slug"], name: "index_months_on_slug", unique: true
+    t.index ["number"], name: "index_posts_on_number"
+    t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
   add_foreign_key "job_keywords", "jobs"

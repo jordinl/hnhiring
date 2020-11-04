@@ -1,9 +1,9 @@
 class Job < ActiveRecord::Base
-  belongs_to :month, counter_cache: true, touch: true
+  belongs_to :post, counter_cache: true, touch: true
   has_many :job_keywords, dependent: :destroy
   has_many :keywords, through: :job_keywords
 
-  validates :month_id, :description, :published_at, :username, :api_id, presence: true
+  validates :post_id, :description, :published_at, :username, :api_id, presence: true
 
   scope :matching_text_sensitive, -> (text) { where('description ~ ?', text) }
   scope :matching_text, -> (text) { where('description ~* ?', text) }
