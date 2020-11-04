@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :job do
+  factory :comment do
     post
     published_at { Time.zone.now }
     username { 'joe' }

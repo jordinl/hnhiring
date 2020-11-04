@@ -9,11 +9,11 @@ class ImportMonthService
 
     post.fetch(:comments).each do |html_comment|
       next if html_comment.fetch(:text).blank?
-      job = @post.jobs.find_or_initialize_by(api_id: html_comment.fetch(:id))
-      job.published_at ||= Time.parse(html_comment.fetch(:created_at))
-      job.username = html_comment.fetch(:author)
-      job.description = sanitize_description(html_comment.fetch(:text))
-      job.save! if job.changed?
+      comment = @post.comments.find_or_initialize_by(api_id: html_comment.fetch(:id))
+      comment.published_at ||= Time.parse(html_comment.fetch(:created_at))
+      comment.username = html_comment.fetch(:author)
+      comment.description = sanitize_description(html_comment.fetch(:text))
+      comment.save! if comment.changed?
     end
   end
 

@@ -1,4 +1,4 @@
-class Job < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   belongs_to :post, counter_cache: true, touch: true
   has_many :comment_keywords, dependent: :destroy
   has_many :keywords, through: :comment_keywords

@@ -21,12 +21,12 @@ class JobsController < ApplicationController
   private
 
   def find_jobs
-    @jobs = @post.jobs.order(published_at: :desc)
+    @jobs = @post.comments.order(published_at: :desc)
     search_keywords.each do |keyword|
       @jobs.where!('description::varchar ILIKE ?', "%#{keyword}%")
     end
-    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.technology.where(slug: search_technologies))) if search_technologies.present?
-    @jobs.where!(id: Job.joins(:keywords).merge(Keyword.location.where(slug: search_locations))) if search_locations.present?
+    @jobs.where!(id: Comment.joins(:keywords).merge(Keyword.technology.where(slug: search_technologies))) if search_technologies.present?
+    @jobs.where!(id: Comment.joins(:keywords).merge(Keyword.location.where(slug: search_locations))) if search_locations.present?
     @jobs.distinct!
     @previous_post = @post.previous_post
   end

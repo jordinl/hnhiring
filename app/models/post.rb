@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   validates :number, :api_id, presence: true
   validates :number, uniqueness: true
 
-  has_many :jobs, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_create :set_slug
 
@@ -40,7 +40,7 @@ class Post < ActiveRecord::Base
   end
 
   def published_at
-    jobs.order(:published_at).last.published_at
+    comments.order(:published_at).last.published_at
   end
 
   private

@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_154803) do
+ActiveRecord::Schema.define(version: 2020_11_04_160737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
 
   create_table "comment_keywords", force: :cascade do |t|
-    t.bigint "job_id"
+    t.bigint "comment_id"
     t.bigint "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_comment_keywords_on_job_id"
+    t.index ["comment_id"], name: "index_comment_keywords_on_comment_id"
     t.index ["keyword_id"], name: "index_comment_keywords_on_keyword_id"
   end
 
-  create_table "jobs", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.text "description"
     t.datetime "published_at"
     t.string "username"
@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 2020_11_04_154803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "api_id"
-    t.index ["api_id"], name: "index_jobs_on_api_id"
-    t.index ["description"], name: "index_jobs_on_description", opclass: :gin_trgm_ops, using: :gin
-    t.index ["post_id"], name: "index_jobs_on_post_id"
+    t.index ["api_id"], name: "index_comments_on_api_id"
+    t.index ["description"], name: "index_comments_on_description", opclass: :gin_trgm_ops, using: :gin
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "keywords", force: :cascade do |t|
     t.string "slug"
-    t.integer "jobs_count", default: 0
+    t.integer "comments_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "kind"
@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 2020_11_04_154803) do
     t.string "api_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "jobs_count", default: 0
+    t.integer "comments_count", default: 0
     t.string "slug"
     t.index ["number"], name: "index_posts_on_number"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
-  add_foreign_key "comment_keywords", "jobs"
+  add_foreign_key "comment_keywords", "comments"
   add_foreign_key "comment_keywords", "keywords"
 end
