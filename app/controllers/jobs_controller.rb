@@ -14,7 +14,7 @@ class JobsController < ApplicationController
     keyword_param = params[:technology] || params[:location]
     keyword_kind = params.has_key?(:technology) ? :technology : :location
     @technology = Keyword.find_by!(slug: keyword_param, kind: keyword_kind)
-    @post = Post.find_by(slug: params[:month]) || Post.order(:number).last
+    @post = HiringPost.find_by(slug: params[:month]) || HiringPost.order(:number).last
     find_jobs
   end
 

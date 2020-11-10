@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   validates :number, :api_id, presence: true
-  validates :number, uniqueness: true
+  validates :number, uniqueness: { scope: :type }
 
   has_many :comments, dependent: :destroy
 

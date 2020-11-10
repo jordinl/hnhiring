@@ -2,7 +2,7 @@ class SitemapsController < ApplicationController
   layout false
 
   def show
-    @posts = Post.joins(:comments)
+    @posts = HiringPost.joins(:comments)
                 .select(:id, :slug, 'max(comments.published_at) as max_published_at')
                 .group(:id)
 

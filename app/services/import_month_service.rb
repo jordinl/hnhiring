@@ -3,7 +3,11 @@ class ImportMonthService
 
   def call
     attributes = HackerNewsClient.fetch_latest_hiring_post
-    post ||= HiringPost.find_or_create_from_api(attributes)
+    post = HiringPost.find_or_create_from_api(attributes)
+    add_comments(post, attributes.fetch(:comments))
+
+    attributes = HackerNewsClient.fetch_latest_freelancing_post
+    post = FreelancerPost.find_or_create_from_api(attributes)
     add_comments(post, attributes.fetch(:comments))
   end
 
