@@ -22,7 +22,7 @@
               strong Technologies
           .row.mb-3(data-show-by-score=20)
             - all_technologies.sort_by { |k| keyword_name(k) }.each do |technology|
-              .col-6.pr-1.pr-sm-3(data-score=technology.comments_count)
+              .col-6.pr-1.pr-sm-3(data-score=technology.jobs_count)
                 .form-check
                   - checkbox_id = "#{modal_id}-technologies-#{technology.slug}"
                   = check_box_tag 'technologies_checkboxes[]', technology.slug, selected_technologies.include?(technology.slug),
@@ -33,7 +33,7 @@
               strong Locations
           .row.mb-3(data-show-by-score=20)
             - all_locations.sort_by { |k| keyword_name(k) }.each_with_index do |location, index|
-              .col-6.pr-1.pr-sm-3(data-score=location.comments_count)
+              .col-6.pr-1.pr-sm-3(data-score=location.jobs_count)
                 .form-check
                   - checkbox_id = "#{modal_id}-location-#{location.slug}"
                   = check_box_tag 'locations_checkboxes[]', location.slug, selected_locations.include?(location.slug),

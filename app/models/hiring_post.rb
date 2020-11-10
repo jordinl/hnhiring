@@ -1,0 +1,2 @@
+class HiringPost < Post
+end

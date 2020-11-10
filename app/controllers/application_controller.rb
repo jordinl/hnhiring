@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def last_post
-    @last_post ||= Post.order(:number).last
+    @last_post ||= HiringPost.order(:number).last
   end
 
   def set_raven_context

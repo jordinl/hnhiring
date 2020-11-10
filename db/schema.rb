@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_160737) do
+ActiveRecord::Schema.define(version: 2020_11_06_171605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_11_04_160737) do
 
   create_table "keywords", force: :cascade do |t|
     t.string "slug"
-    t.integer "comments_count", default: 0
+    t.integer "jobs_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "kind"
@@ -55,8 +55,10 @@ ActiveRecord::Schema.define(version: 2020_11_04_160737) do
     t.datetime "updated_at"
     t.integer "comments_count", default: 0
     t.string "slug"
+    t.string "type", default: "HiringPost"
     t.index ["number"], name: "index_posts_on_number"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+    t.index ["type"], name: "index_posts_on_type"
   end
 
   add_foreign_key "comment_keywords", "comments"

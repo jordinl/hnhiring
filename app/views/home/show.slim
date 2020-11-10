@@ -24,17 +24,17 @@
 
     table.keywords.mt-3
       tbody
-        - all_technologies.sort_by(&:comments_count).reverse.each_with_index do |technology, index|
-          tr(data-score=technology.comments_count)
+        - all_technologies.sort_by(&:jobs_count).reverse.each_with_index do |technology, index|
+          tr(data-score=technology.jobs_count)
             td #{index + 1}.
-            td= link_to "#{technology.comments_count} #{keyword_name(technology)} jobs", technology_path(technology)
+            td= link_to "#{technology.jobs_count} #{keyword_name(technology)} jobs", technology_path(technology)
 
 .container.pb-5.pt-5(data-show-by-score=15)
   h2.center Locations
 
   table.keywords.mt-3
     tbody
-      - all_locations.sort_by(&:comments_count).reverse.each_with_index do |location, index|
-        tr(data-score=location.comments_count)
+      - all_locations.sort_by(&:jobs_count).reverse.each_with_index do |location, index|
+        tr(data-score=location.jobs_count)
           td #{index + 1}.
-          td= link_to "#{location.comments_count} #{keyword_name(location)} jobs", location_path(location)
+          td= link_to "#{location.jobs_count} #{keyword_name(location)} jobs", location_path(location)

@@ -154,6 +154,8 @@ class Keyword < ActiveRecord::Base
           comment.keywords << keyword
         end
         keyword.comment_keywords.joins(:comment).where.not(comments: { id: comments_scope }).destroy_all
+        jobs_count = keyword.comments.reload.joins(:post).merge(HiringPost.all).count
+        keyword.update_columns(jobs_count: jobs_count)
       end
     end
   end
