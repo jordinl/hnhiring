@@ -43,6 +43,12 @@ class Post < ActiveRecord::Base
     comments.order(:published_at).last.published_at
   end
 
+  def self.find_or_create_from_api(attributes)
+    number = attributes.fetch(:created_at).split('-')[0..1].join.to_i
+    api_id = attributes.fetch(:id)
+    find_or_create_by!(number: number, api_id: api_id)
+  end
+
   private
 
   def set_slug

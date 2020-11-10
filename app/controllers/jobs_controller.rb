@@ -1,11 +1,11 @@
 class JobsController < ApplicationController
   def index
-    @post = Post.find_by!(slug: params[:month])
+    @post = HiringPost.find_by!(slug: params[:month])
     find_jobs
   end
 
   def search
-    @post = Post.order(:number).last
+    @post = HiringPost.order(:number).last
     find_jobs
     render :index
   end
