@@ -22,7 +22,9 @@
   .container.pb-5.pt-5.center
     h2 Freelancer? Seeking freelancer?
 
-    p Visit the #{link_to("Ask HN: Freelancer? Seeking Freelancer? (#{latest_freelancer_post})", latest_freelancer_post)}
+    p
+      | There are #{link_to("#{latest_freelancer_post.comments.count} freelancers and gigs", latest_freelancer_post)}
+        offered in the #{latest_freelancer_post} post.
 
 .container.pb-5.pt-5(data-show-by-score=15)
   h2.center Technologies

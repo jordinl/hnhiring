@@ -42,7 +42,8 @@ html
     = render 'layouts/menu'
     nav.navbar.navbar-default.footer
       div= link_to 'Home', root_path
-      div= link_to "#{latest_hiring_post} Jobs", latest_hiring_post
+      div= link_to "View Jobs", latest_hiring_post
+      div= link_to "View Freelancers", latest_freelancer_post
       div= link_to 'Job Trends', trends_path
       div= link_to 'FAQs', faqs_path
       div= link_to 'Contact', contact_path
