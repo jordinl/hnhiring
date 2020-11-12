@@ -34,9 +34,9 @@ html
     = yield
     = render 'layouts/search',
             modal_id: 'searchModal',
-            form_url: search_path,
+            form_url: request.path.start_with?('/freelancer') ? request.path : search_path,
             show_keywords: true,
-            title: 'Search Jobs',
+            title: request.path.start_with?('/freelancer') ? 'Search Freelancers and Gigs' : 'Search Jobs',
             selected_technologies: search_technologies,
             selected_locations: search_locations
     = render 'layouts/menu'

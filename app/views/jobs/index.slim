@@ -3,4 +3,4 @@
 
 = render 'jobs/jobs',
         title: link_to("#{@post} #{@post.subresource}", @post.url),
-        next_path: @previous_post && hiring_post_path(@previous_post, request.query_parameters)
+        next_path: @previous_post && url_for([@previous_post, request.query_parameters])
