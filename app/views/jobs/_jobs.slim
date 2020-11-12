@@ -19,4 +19,4 @@ ul.jobs
   .container
     .row
       .col-12.col-sm-9.col-lg-6.col-xl-6.next-container
-        = link_to "View #{@previous_post.name} Jobs", next_path, class: 'next btn green border-green'
+        = link_to "View #{@previous_post.name} #{@post.subresource}", next_path, class: 'next btn green border-green'
