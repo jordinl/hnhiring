@@ -9,9 +9,9 @@
 
   p.mb-1 The latest post is:
   .month
-    h2= link_to last_post, last_post
-    .published-at.mb-1 Updated on #{last_post.published_at.to_date.to_s(:long)}
-    .gray #{last_post.comments_count} jobs found
+    h2= link_to latest_hiring_post, latest_hiring_post
+    .published-at.mb-1 Updated on #{latest_hiring_post.published_at.to_date.to_s(:long)}
+    .gray #{latest_hiring_post.comments_count} jobs found
 
   hr.section-divider
   .month
@@ -19,22 +19,28 @@
     h3(data-format-datetime=(@next_post_time.to_i * 1000))= @next_post_time.strftime('%a, %-d %b %Y at %-H:%M %Z')
 
 .odd
-  .container.pb-5.pt-5(data-show-by-score=15)
-    h2.center Technologies
+  .container.pb-5.pt-5.center
+    h2 Freelancer? Seeking freelancer?
 
-    table.keywords.mt-3
-      tbody
-        - all_technologies.sort_by(&:jobs_count).reverse.each_with_index do |technology, index|
-          tr(data-score=technology.jobs_count)
-            td #{index + 1}.
-            td= link_to "#{technology.jobs_count} #{keyword_name(technology)} jobs", technology_path(technology)
+    p Visit the #{link_to("Ask HN: Freelancer? Seeking Freelancer? (#{latest_freelancer_post})", latest_freelancer_post)}
 
 .container.pb-5.pt-5(data-show-by-score=15)
-  h2.center Locations
+  h2.center Technologies
 
   table.keywords.mt-3
     tbody
-      - all_locations.sort_by(&:jobs_count).reverse.each_with_index do |location, index|
-        tr(data-score=location.jobs_count)
+      - all_technologies.sort_by(&:jobs_count).reverse.each_with_index do |technology, index|
+        tr(data-score=technology.jobs_count)
           td #{index + 1}.
-          td= link_to "#{location.jobs_count} #{keyword_name(location)} jobs", location_path(location)
+          td= link_to "#{technology.jobs_count} #{keyword_name(technology)} jobs", technology_path(technology)
+
+.odd
+  .container.pb-5.pt-5(data-show-by-score=15)
+    h2.center Locations
+
+    table.keywords.mt-3
+      tbody
+        - all_locations.sort_by(&:jobs_count).reverse.each_with_index do |location, index|
+          tr(data-score=location.jobs_count)
+            td #{index + 1}.
+            td= link_to "#{location.jobs_count} #{keyword_name(location)} jobs", location_path(location)

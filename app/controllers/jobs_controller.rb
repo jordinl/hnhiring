@@ -4,6 +4,13 @@ class JobsController < ApplicationController
     find_jobs
   end
 
+  def freelancer
+    @post = FreelancerPost.find_by!(slug: params[:month])
+    @title = "Freelancer? Seeking freelancer? (#{@post.to_s})"
+    find_jobs
+    render :index
+  end
+
   def search
     @post = HiringPost.order(:number).last
     find_jobs

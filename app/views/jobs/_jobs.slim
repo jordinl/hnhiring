@@ -1,6 +1,6 @@
 .container
   h1.center.page-title= title
-  .center.page-subtitle #{@jobs.length} jobs found
+  .center.page-subtitle #{@jobs.length} #{@post.subresource.downcase} found
   - if @jobs.length > 100
     .center.show-all
       | Showing 100 results -
