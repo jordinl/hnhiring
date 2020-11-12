@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc><%= root_url %></loc>
-    <lastmod><%= @posts.map(&:max_published_at).max.iso8601 %></lastmod>
+    <lastmod><%= @hiring_posts.map(&:max_published_at).max.iso8601 %></lastmod>
   </url>
-  <%- @posts.find_each do |post| %>
+  <%- @hiring_posts.find_each do |post| %>
     <url>
-      <loc><%= post_url(post) %></loc>
+      <loc><%= hiring_post_url(post) %></loc>
+      <lastmod><%= post.max_published_at.iso8601 %></lastmod>
+    </url>
+  <% end %>
+  <%- @freelancer_posts.find_each do |post| %>
+    <url>
+      <loc><%= freelancer_post_url(post) %></loc>
       <lastmod><%= post.max_published_at.iso8601 %></lastmod>
     </url>
   <% end %>
