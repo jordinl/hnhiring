@@ -36,7 +36,8 @@ class Keyword < ActiveRecord::Base
       rust:           -> { Comment.matching_words(%w(rust)) },
       scala:          -> { Comment.matching_words(%w(scala)) },
       swift:          -> { Comment.matching_words(%w(swift)) },
-      vue:            -> { Comment.matching_words(%w(vue vuejs)) }
+      vue:            -> { Comment.matching_words(%w(vue vuejs)) },
+      wasm:           -> { Comment.matching_words(%w(wasm webassembly)) }
     },
     location:   {
       amsterdam:       -> { Comment.matching_words(%w(Amsterdam)) },

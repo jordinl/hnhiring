@@ -9,3 +9,4 @@ en:
     php: PHP
     rails: Ruby on Rails
     vue: VueJS
+    wasm: WebAssembly
