@@ -17,3 +17,4 @@
 /.idea
 spec/examples.txt
 .env
+latest.dump
