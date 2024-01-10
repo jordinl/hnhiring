@@ -8,12 +8,16 @@ class TrendsController < ApplicationController
     @locations = Keyword.location.where(slug: trends_locations) if trends_locations.any?
     @posts    = HiringPost.order(number: :asc)
 
-    @counts = Keyword.technology.left_joins(comments: [:post, :comment_keywords])
-                .group('posts.id', :id)
-                .select('keywords.*, posts.id as post_id, count(distinct(comments)) as count')
-                .merge(HiringPost.all)
+    @counts = Keyword.technology.left_joins(:comments)
+                .group('comments.post_id', :id)
+                .select('keywords.*, comments.post_id, count(comments) as count')
                 .where(id: @technologies)
-    @counts.where!(comment_keywords_comments: { keyword_id: @locations }) if @locations
+
+    if @locations
+      @counts.merge!(
+        Comment.where(id: Comment.joins(:comment_keywords)
+                                 .merge(CommentKeyword.where(keyword_id: @locations))))
+    end
   end
 
   private

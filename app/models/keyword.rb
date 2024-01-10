@@ -160,14 +160,23 @@ class Keyword < ActiveRecord::Base
       finders.each do |slug, finder|
         keyword = find_or_create_by!(slug: slug, kind: kind)
         comments_scope = finder.call
-        comments_scope.where.not(id: keyword.comments).find_each do |comment|
-          comment.keywords << keyword
+        comments_scope.where.not(id: keyword.comments).in_batches do |batch|
+          comment_ids = batch.pluck(:id)
+          keyword_id = keyword.id
+          created_at = updated_at = Time.current
+          default_args = { keyword_id:, created_at:, updated_at: }
+          CommentKeyword.insert_all(comment_ids.map { |comment_id| { comment_id:, **default_args }})
         end
-        keyword.comment_keywords.joins(:comment).where.not(comments: { id: comments_scope }).destroy_all
+        keyword.comment_keywords.joins(:comment).where.not(comments: { id: comments_scope }).delete_all
         jobs_count = keyword.comments.reload.joins(:post).merge(HiringPost.all).count
         keyword.update_columns(jobs_count: jobs_count)
       end
     end
+  end
+
+  def self.purge!
+    CommentKeyword.delete_all
+    delete_all
   end
 
   def to_param
