@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
-ruby '2.7.1'
+ruby '3.2.2'
 
 gem 'bootsnap'
 gem 'pg'
 gem 'puma'
 gem 'sass-rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 6.0'
 gem 'sentry-raven'
 gem 'slim-rails'
 gem 'turbolinks'

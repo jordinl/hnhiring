@@ -36,6 +36,6 @@ module HackerNewsClient
   end
 
   def self.get(path)
-    JSON.parse(open("https://hn.algolia.com/api/v1/#{path}").read)
+    JSON.parse(URI.open("https://hn.algolia.com/api/v1/#{path}").read)
   end
 end
