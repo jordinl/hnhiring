@@ -2,9 +2,11 @@ en:
   technology:
     cplusplus: C++
     csharp: C#
+    dotnet: .NET
     ember: EmberJS
     ios: iOS
     javascript: JavaScript
+    nextjs: Next.js
     node: NodeJS
     php: PHP
     rails: Ruby on Rails
