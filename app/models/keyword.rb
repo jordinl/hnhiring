@@ -44,6 +44,7 @@ class Keyword < ActiveRecord::Base
       rust:           -> { Comment.matching_words(%w(rust)) },
       scala:          -> { Comment.matching_words(%w(scala)) },
       snowflake:      -> { Comment.matching_words(%w(snowflake)) },
+      svelte:         -> { Comment.matching_words(%w(svelte)) },
       swift:          -> { Comment.matching_words(%w(swift swiftui)) },
       tensorflow:     -> { Comment.matching_words(%w(tensorflow)) },
       typescript:     -> { Comment.matching_words(%w(typescript)) },
