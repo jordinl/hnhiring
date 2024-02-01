@@ -10,12 +10,12 @@
   p.mb-1 The latest post is:
   .month
     h2= link_to latest_hiring_post, latest_hiring_post
-    .published-at.mb-1 Updated on #{latest_hiring_post.published_at.to_date.to_s(:long)}
+    .published-at.mb-1 Updated on #{latest_hiring_post.published_at.strftime('%B %-d')}
     .gray #{latest_hiring_post.comments_count} jobs found
 
   hr.section-divider
   .month
-    p.mb-1 Next Hiring post will go live on:
+    p.mb-1 Next hiring post will be published on:
     h3(data-format-datetime=(@next_post_time.to_i * 1000))= @next_post_time.strftime('%a, %-d %b %Y at %-H:%M %Z')
 
 .odd
