@@ -1,8 +1,10 @@
 class NextPostCalculator
   def call
-    target_date = calculate_date + 11 * 3_600
-    return target_date if Time.zone.now <= target_date
-    calculate_date(target_date.next_month.beginning_of_month) + 11 * 3_600
+    Time.use_zone('America/New_York') do
+      target_date = calculate_date + 11 * 3_600
+      return target_date if Time.zone.now <= target_date
+      calculate_date(target_date.next_month.beginning_of_month) + 11 * 3_600
+    end
   end
 
   private
