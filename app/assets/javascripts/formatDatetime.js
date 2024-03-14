@@ -14,7 +14,8 @@ $(document).on('turbolinks:load', function () {
         days > 0 ? `${days}d` : null,
         hours > 0 || days > 0 ? `${hours}h` : null,
         minutes > 0 || days > 0 || hours > 0 ? `${minutes}m` : null,
-        `${seconds}s`
+        difference < 60 && seconds > 0 ? `${seconds}s` : null,
+        difference < 0 ? 'soon' : null
       ].filter(_ => _).join(' ')
       $el.text(text)
     }
