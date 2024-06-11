@@ -22,6 +22,8 @@ class ImportMonthService
       comment.description = sanitize_description(html_comment.fetch(:text))
       comment.save! if comment.changed?
     end
+
+    post.comments.where.not(api_id: comments.map { |c| c[:id] }).destroy_all
   end
 
   def sanitize_description(text)
