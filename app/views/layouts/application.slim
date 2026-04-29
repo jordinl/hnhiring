@@ -28,6 +28,10 @@ html
         = link_to '#', class: 'right search-icon', 'data-target' => '#searchModal', 'data-toggle' => 'modal' do
           i.fas.fa-search
 
+    .container.alert.mt-4.mb-0.center(class="alert-info")
+      ' Search more jobs on
+      a.alert-link href="https://jobanni.com" jobanni.com
+
     - %i(notice success warning error).each do |kind|
       - if flash[kind].present?
         .container.alert.mt-4.mb-0.center(class="alert-#{kind}" data-alert)= flash[kind]
