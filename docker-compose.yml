@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: hnhiring_dev
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PSQL_HISTORY: /var/lib/postgresql/.psql_history
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres18:/var/lib/postgresql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL",  "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres18:

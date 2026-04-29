@@ -18,3 +18,4 @@
 spec/examples.txt
 .env
 latest.dump
+.mise.local.toml

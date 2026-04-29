@@ -1,8 +1,10 @@
 development:
   adapter: postgresql
+  host: localhost
+  port: <%= ENV.fetch('DB_PORT', 5432) %>
   database: hnhiring_dev
+  username: postgres
   encoding: unicode
-  password:
   pool: 5
   timeout: 5000
 
@@ -16,8 +18,10 @@ production:
 
 test:
   adapter: postgresql
+  host: localhost
+  port: <%= ENV.fetch('DB_PORT', 5432) %>
   database: hnhiring_test
+  username: postgres
   encoding: unicode
-  password:
   pool: 5
   timeout: 5000
